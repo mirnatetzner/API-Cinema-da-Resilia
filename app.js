@@ -1,6 +1,5 @@
 import express from "express";
 import * as dotenv from "dotenv"
-import Sala from "./src/controllers/Sala.js"
 import Salas from "./src/controllers/Sala.js";
 
 dotenv.config()

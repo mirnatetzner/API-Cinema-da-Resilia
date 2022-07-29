@@ -34,9 +34,9 @@ class ValidacoesSala extends ValidacoesService{
     */
     static validaLucratividade(valor){
         let RegExp = /[,|.|\$|R]/g 
-        let valor = valor.replaceAll(RegExp,"")
-        valor = parseFloat(valor)
-        if(valor != Number){
+        let valorClean = valor.replaceAll(RegExp,"")
+        valorfloat = parseFloat(valorClean)
+        if(valorfloat != Number){
             return false
         }
             return true
