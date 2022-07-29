@@ -6,7 +6,7 @@ class ValidacoesSala extends ValidacoesService{
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         dimensao VARCHAR,
         capacidade INTEGER,
-        lucratividade NUMERIC,
+        lucratividade DECIMAL(10, 2),
         exibicoes VARCHAR
  */
      /**

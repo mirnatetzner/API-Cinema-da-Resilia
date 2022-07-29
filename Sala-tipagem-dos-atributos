@@ -5,7 +5,8 @@
 
         capacidade INTEGER,
 
-        lucratividade NUMERIC,
+## lucratividade DECIMAL(10, 2)
+
 
 ## exibicoes SMALLDATETIME
 
