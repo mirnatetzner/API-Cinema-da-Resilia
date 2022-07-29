@@ -1,12 +1,19 @@
-  
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+# Regras de negócio para api-cinema-da-resilia (Salas)
+## id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        dimensao VARCHAR,
+## dimensao VARCHAR
 
-        capacidade INTEGER,
+Dimensão diz respeito ao tipo de filme exibido nessa sala, nosso cinema possui salas preparadas especificamente para cada experiência sensorial. As opções para esse atributo são: "cadeiras namoradeiras", "2D", "3D" e "5D".
+
+## capacidade INTEGER
+
+Capacidade da sala de comportar pessoas, ou seja, o número de cadeiras em condições de serem utilizadas. Será necessariamente um número inteiro. A capacidade não calcula número de ingressos já vendidos e lugares disponíveis.
+
+<!-- Medimos a capacidade em dois grupos de cadeiras "comuns" e "acessibilidade". -->
 
 ## lucratividade DECIMAL(10, 2)
 
+valores com até 10 digitos depois da vírgula e precisão de duas casas decimais para centavos de real.
 
 ## exibicoes SMALLDATETIME
 
