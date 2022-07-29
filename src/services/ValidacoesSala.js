@@ -34,7 +34,7 @@ class ValidacoesSala extends ValidacoesService{
                 true
               break;
             default:
-              console.log(`Você deve escolher uma das opções: imax, xd, macro xe, 4dx, xplus, reald e d-box `);
+              console.log(`Você deve escolher uma das opções: imax, xd, macro xe, 4dx, xplus, reald e d-box (certifique-se de escrever como no exemplo). `);
           }
     }
 
