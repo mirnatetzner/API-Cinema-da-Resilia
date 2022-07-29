@@ -36,6 +36,25 @@ class CombosMetodos {
             })
         })
     }
+
+    static adicaoNovosCombos(combos) {
+        const query = `
+            INSERT INTO combos (nome, price, item1, item2, item3)
+            VALUES (?, ?, ?, ?, ?)`
+
+        const body = Object.values(combos)
+
+        return new Promise((resolve, reject) => {
+            CombosDatabase.run(query, [...body], (e) => {
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve({error: false, message: "Combo adicionado ao cardápio com sucesso!"})
+                }
+            })
+        })
+    }
+
 }
 
 export default CombosMetodos
