@@ -36,7 +36,7 @@ class CombosMetodos {
             })
         })
     }
-
+    
     static adicaoNovosCombos(combos) {
         const query = `
             INSERT INTO combos (nome, price, item1, item2, item3)
