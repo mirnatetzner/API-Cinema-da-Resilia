@@ -8,19 +8,19 @@ const Sala ={
         lucratividade DECIMAL(10, 2),
         exibicoes SMALLDATETIME
  */
-    id: "",
+    id: 0 ,
     dimensão: "3D",
     capacidade: 150,
     lucratividade: 150.00,
-    exibicoes: "15/07/2022 12:12:12"
+    exibicoes: "2022-07-15 12:12:12"
 }
 
 try {
 
-    const tabela = await DatabaseMetodos.createTableUsuarios()
+    const tabela = await DatabaseMetodos.createTableSala()
     console.log(tabela)
 
-    const criada = await DatabaseMetodos.inserirUsuario(usuario)
+    const criada = await DatabaseMetodos.inserirSala(Sala)
     console.log(criada)
 
 } catch (e) {
