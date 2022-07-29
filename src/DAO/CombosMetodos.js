@@ -54,7 +54,6 @@ class CombosMetodos {
             })
         })
     }
-
 }
 
 export default CombosMetodos
