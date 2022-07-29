@@ -1,5 +1,24 @@
 # Regras de negócio para api-cinema-da-resilia (Salas)
-## id INTEGER PRIMARY KEY AUTOINCREMENT,
+## id INTEGER PRIMARY KEY AUTOINCREMENT
+
+
+## cadeiras_comuns INTEGER
+
+
+## cadeiras_namoradeiras INTEGER
+
+## espaço_cadeirantes INTEGER
+
+## certificado_de_vistoria_anual BIT NOT NULL
+
+## categoria da sala VARCHAR(256)
+ IMAX, XD, Macro XE, 4DX, XPlus, RealD e D-Box
+
+
+
+
+
+
 
 ## dimensao VARCHAR
 
@@ -9,11 +28,18 @@ Dimensão diz respeito ao tipo de filme exibido nessa sala, nosso cinema possui 
 
 Capacidade da sala de comportar pessoas, ou seja, o número de cadeiras em condições de serem utilizadas. Será necessariamente um número inteiro. A capacidade não calcula número de ingressos já vendidos e lugares disponíveis.
 
-<!-- Medimos a capacidade em dois grupos de cadeiras "comuns" e "acessibilidade". -->
 
+<!-- 
 ## lucratividade DECIMAL(10, 2)
 
 valores com até 10 digitos depois da vírgula e precisão de duas casas decimais para centavos de real.
+
+
+        lucratividade
+        valor = valor.replace(",",".")
+        valor = valor.toFixed(2)  
+        trata --- se tiver dois numeros depois da virgula ou ponto arredondar, torna-lo float (tranformar , em .)
+            
 
 ## exibicoes SMALLDATETIME
 
@@ -23,3 +49,4 @@ smalldatetime	AAAA-MM-DD hh:mm:ss	01.01.00 a 06.06.79
         - Horário de funcionamento entre 07:00:00 - 23:00:00
         - Data de lançamento do cinema: 2022-07-15 (nenhum filme antes)
         - Data de compras futuras: até 1 mês a partir do dia da compra (não existem exibições além de um mês a partir da data atual)
+ -->

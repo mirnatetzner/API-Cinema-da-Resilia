@@ -2,13 +2,7 @@ import ValidacoesService from "./ValidacoesService.js";
 
 class ValidacoesSala extends ValidacoesService{
 
-/*    
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        dimensao VARCHAR,
-        capacidade INTEGER,
-        lucratividade DECIMAL(10, 2),
-        exibicoes VARCHAR
- */
+
      /**
      * 
      * @param 
@@ -42,10 +36,7 @@ class ValidacoesSala extends ValidacoesService{
             return true
     }
 
-/**
- *  exibições é do tipo SMALLDATETIME
- * @returns boolean
- */
+
     static validaExibicoes(){
         return 
     }

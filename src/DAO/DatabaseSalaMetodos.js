@@ -4,20 +4,22 @@ class DatabaseSalaMetodos extends DAO{
 
     static async createTableSala(){
         const query = `
+
         CREATE TABLE IF NOT EXISTS sala(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            dimensao VARCHAR,
-            capacidade INTEGER,
-            lucratividade DECIMAL(10, 2),
-            exibicoes SMALLDATETIME
+            cadeiras_comuns INTEGER
+            cadeiras_namoradeiras INTEGER
+            espaços_cadeirantes INTEGER
+            certificado_de_vistoria_anual BIT NOT NULL
+            categoria_da_sala VARCHAR(20)
             )
-        `
+            `
         const response = await this.createTable(query)
         return response
     }
 
     static async inserirSala(Sala){
-        const query = `INSERT INTO Sala (id, dimensao, capacidade, lucratividade, exibicoes) VALUES (?,?,?,?,?)`
+        const query = `INSERT INTO Sala (id, cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) VALUES (?,?,?,?,?,?)`
         const response = await this.inserir(Sala, query)
         return response
     }
