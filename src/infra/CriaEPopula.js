@@ -1,4 +1,4 @@
-import CombosDatabase from "./CombosDatabase.js";
+import CombosMetodos from "../DAO/CombosMetodos.js";
 
 const combos = {
     name: "",
@@ -7,14 +7,14 @@ const combos = {
     item2: "", 
     item3: ""
 }
-try {
-    const criaCombos = await CombosDatabase.createTableCombos()
-    console.log(criaCombos)
+    try {
+        const criaCombos = await CombosMetodos.createTableCombos()
+        console.log(criaCombos)
 
-    const addNovoCombo = await CombosDatabase.adicaoNovosCombos()
-    console.log(addNovoCombo)
+        const addNovoCombo = await CombosMetodos.adicaoNovosCombos(combos)
+        console.log(addNovoCombo)
 
-} catch(e) {
-    console.log(e)
+    } catch(e) {
+        console.log(e)
 
-}
+    }

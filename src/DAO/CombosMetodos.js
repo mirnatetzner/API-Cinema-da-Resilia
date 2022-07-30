@@ -36,10 +36,24 @@ class CombosMetodos {
             })
         })
     }
+
+    static listarCombos(combos){
+        const body = Object.values(combos)
+
+        return body
+        // return new Promise((resolve, reject) => {
+        //     CombosDatabase.run(query, [...body], (e) => {
+        //         if(e){
+        //             reject(e.message)
+        //         } else {
+        //             resolve({error: false} combos.values)
+        //         }
+        //     }))
+    }
     
     static adicaoNovosCombos(combos) {
         const query = `
-            INSERT INTO combos (nome, price, item1, item2, item3)
+            INSERT INTO combos (name, price, item1, item2, item3)
             VALUES (?, ?, ?, ?, ?)`
 
         const body = Object.values(combos)
