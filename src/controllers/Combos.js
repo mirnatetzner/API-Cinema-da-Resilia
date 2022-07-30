@@ -6,7 +6,7 @@ class Combos{
      * @param {*} app 
      * 
      */
-    static tiposdecombos(app){
+    static combos(app){
         app.get("/combos", (req, res) => {
             const response = 
             res.status(200).json(response)
