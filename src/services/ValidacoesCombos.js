@@ -32,7 +32,8 @@ export default class ValidacoesCombos {
      * @returns Object
      */
     static validaItens(){
-        return this.validaItem1(item1, item2, item3) 
+        return this.validaName(name)
+            && this.validaItem1(item1, item2, item3) 
             && this.validaItem2(item1, item2, item3) 
             && this.validaItem3(item1, item2, item3)
     }

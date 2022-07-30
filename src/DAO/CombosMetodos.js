@@ -1,4 +1,4 @@
-import { CombosDatabase } from "../infra/CombosDatabase.js"
+import CombosDatabase from "../infra/CombosDatabase.js"
 
 class CombosMetodos {
     static activePragma(){
