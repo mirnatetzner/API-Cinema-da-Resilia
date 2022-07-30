@@ -56,3 +56,14 @@ Exemplo de resposta:
 	}
 ]
 ```
+## Dependências necessárias para configuração de ambiente:
+### Express
+```npm i express```
+### Sqlite3
+```npm i sqlite3```
+### Dotenv
+```npm i dotenv```
+### Path
+```npm i path```
+### Url
+```npm i url```
