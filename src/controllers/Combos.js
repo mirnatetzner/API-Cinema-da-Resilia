@@ -1,6 +1,11 @@
 import CombosModels from "../models/CombosModels.js"
 
 class Combos{
+    /**
+     * 
+     * @param {*} app 
+     * 
+     */
     static tiposdecombos(app){
         app.get("/combos", (req, res) => {
             const response = 
