@@ -49,4 +49,29 @@ smalldatetime	AAAA-MM-DD hh:mm:ss	01.01.00 a 06.06.79
         - Horário de funcionamento entre 07:00:00 - 23:00:00
         - Data de lançamento do cinema: 2022-07-15 (nenhum filme antes)
         - Data de compras futuras: até 1 mês a partir do dia da compra (não existem exibições além de um mês a partir da data atual)
+
+
+/*   id: 1 ,
+    dimensão: "3D",
+    capacidade: 150,
+    lucratividade: 150.00,
+    exibicoes: ["2022-07-15 12:12:12"] */
+
+
+    /*  static validaLucratividade(valor){
+         let RegExp = /[,|.|\$|R]/g 
+         let valorClean = valor.replaceAll(RegExp,"")
+         valorfloat = parseFloat(valorClean)
+         if(valorfloat != Number){
+             return false
+         }
+             return true
+     }
+
+
+     static validaExibicoes(){
+         return 
+     }
+      */
+
  -->

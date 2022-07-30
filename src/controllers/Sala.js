@@ -1,4 +1,4 @@
-import SalaModel from "../models/SalaModel.js";
+import SalaModel from "../models/Models.js";
 import ValidacoesSala from "../services/ValidacoesSala.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import Database from "../infra/Database.js";
@@ -16,7 +16,7 @@ class Salas{
             try {
                 const Sala = await DatabaseSalaMetodos.listarSalaPorId(req.params.id)
                 if(!Sala){
-                    throw new Error("Sala não encontrado para esse Id")
+                    throw new Error("Não encontradamos nenhuma sala com esse Id")
                 }
                 res.status(200).json(Sala)
             } catch (error) {

@@ -1,12 +1,13 @@
 import DatabaseMetodos from "../DAO/DatabaseSalaMetodos.js";
 
 const Sala ={
-   
-    id: 1 ,
-    dimensão: "3D",
-    capacidade: 150,
-    lucratividade: 150.00,
-    exibicoes: ["2022-07-15 12:12:12"]
+    id: 1,
+    cadeiras_comuns: 
+    cadeiras_namoradeiras: 
+    espaços_cadeirantes: 
+    certificado_de_vistoria_anual: 
+    categoria_da_sala:
+
 }
 
 try {

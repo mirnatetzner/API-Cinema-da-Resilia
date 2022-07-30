@@ -1,33 +1,50 @@
 import ValidacoesService from "./ValidacoesService.js";
 
 class ValidacoesSala extends ValidacoesService {
-
+    /**
+     * 
+     * @param {number} cComum 
+     * @returns boolean 
+     */
     static validaCadeiras_comuns(cComum) {
         if (!cComum === Boolean) {
-            cComum = Number(cComum)
-            console.log(cComum);
+            cComum = Number(cComum)  
             let Valid = Number.isInteger(cComum)
-            console.log(Valid);
             if (Valid && cComum > 0) {
                 return true;
             }
         }
         return false;
     }
-
+    /**
+     * 
+     * @param {number} cComum 
+     * @returns boolean 
+     */
     static validaCadeiras_namoradeiras(cNamo) {
-        Number(cNamo)
-        if ( == NaN) {
-            return false;
+        if (!cNamo === Boolean) {
+            cNamo = Number(cNamo)  
+            let Valid = Number.isInteger(cNamo)
+            if (Valid && cNamo > 0) {
+                return true;
+            }
         }
-        if (Number.isInteger())
+        return false;
     }
+        /**
+         * 
+         * @param {number} cComum 
+         * @returns boolean 
+         */
     static validaEspaços_cadeirantes(cAcess) {
-        Number(cAcess)
-        if ( == NaN) {
-            return false;
+        if (!cAcess === Boolean) {
+            cAcess = Number(cAcess)  
+            let Valid = Number.isInteger(cAcess)
+            if (Valid && cAcess > 0) {
+                return true;
+            }
         }
-        if (Number.isInteger())
+        return false;
     }
 
     /**
@@ -47,8 +64,9 @@ class ValidacoesSala extends ValidacoesService {
      * @returns boolean 
      */
     static validaCategoria_da_sala(tipo) {
+        tipo = tipo.toLowerCase
         switch (tipo) {
-            case 'imax':
+            case 'imax': 
             case 'xd':
             case '4dx':
             case 'macro xe':
@@ -60,35 +78,22 @@ class ValidacoesSala extends ValidacoesService {
             default:
                 console.log(`Você deve escolher uma das opções: imax, xd, macro xe, 4dx, xplus, reald e d-box (certifique-se de escrever como no exemplo). `);
         }
+      
     }
 
 
-    /**
-     * 
-     * @param {}  
-     * @param {} 
-     * @param {}  
-     * @returns boolean
-     */
-    static isValid(id, cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) {
-        return this.validaCadeiras_comuns() && this.validaCadeiras_namoradeiras() && this.validaEspaços_cadeirantes() && this.validaCertificado_de_vistoria_anual(certificado) && this.validaCategoria_da_sala(tipo) {}
-
+/**
+ * 
+ * @param {*} cComum 
+ * @param {*} cNamo 
+ * @param {*} cAcess 
+ * @param {*} certificado 
+ * @param {*} tipo 
+ * @returns 
+ */
+    static isValid(cComum, cNamo, cAcess, certificado, tipo) {
+        return this.validaCadeiras_comuns(cComum) && this.validaCadeiras_namoradeiras(cNamo) && this.validaEspaços_cadeirantes(cAcess) && this.validaCertificado_de_vistoria_anual(certificado) && this.validaCategoria_da_sala(tipo);
     }
-
-    /*  static validaLucratividade(valor){
-         let RegExp = /[,|.|\$|R]/g 
-         let valorClean = valor.replaceAll(RegExp,"")
-         valorfloat = parseFloat(valorClean)
-         if(valorfloat != Number){
-             return false
-         }
-             return true
-     }
-
-
-     static validaExibicoes(){
-         return 
-     }
-      */
+}
 
     export default ValidacoesSala
