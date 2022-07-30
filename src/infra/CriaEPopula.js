@@ -1,12 +1,12 @@
-import DatabaseMetodos from "../DAO/DatabaseSalaMetodos.js";
+import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
+import DAO from "../DAO/DAO.js";
 
-const Sala ={
+const sala = {
     cadeiras_comuns: 250,
     cadeiras_namoradeiras: 6,
     espaços_cadeirantes: 4,
     certificado_de_vistoria_anual: true,
     categoria_da_sala: "imax"
-
 }
 
 try {

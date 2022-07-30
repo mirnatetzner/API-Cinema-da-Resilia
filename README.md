@@ -1,17 +1,17 @@
-# ToDoAPI-T18
+# API-Cinema-da-Resilia
 
 ## Como instalar:
 
-* Abra seu terminal em uma pasta de fácil acesso e cole o seguinte comando:
+* Abra seu terminal e cole o seguinte comando na pasta de sua preferência:
 
 ```
-git clone https://github.com/LeoCosta-dev/ToDoAPI-T18.git
+git clone https://github.com/mirnatetzner/API-Cinema-da-Resilia.git
 ```
 
 * Navegue até a pasta do projeto com o seguinte comando:
 
 ```
-cd ToDoAPI-T18
+cd API-Cinema-da-Resilia
 ```
 
 * Instale as dependencias necessárias com o seguinte comando:
@@ -27,16 +27,18 @@ npm start
 ```
 
 ## Exemplo de rotas:
-### Post: url/usuarios
+### Post: url/sala
 
 Objeto de requisição:
 <br>
 
 ```json
 {
-	"nome": "José",
-	"email": "couve@mineira.com.br",
-	"telefone": "2199999999"
+    "cadeiras_comuns": 250,
+    "cadeiras_namoradeiras": 6,
+    "espaços_cadeirantes": 4,
+    "certificado_de_vistoria_anual": true,
+    "categoria_da_sala": "imax"
 }
 ```
 <br>
@@ -46,9 +48,11 @@ Exemplo de resposta:
 ```json
 [
 	{
-		"nome": "José",
-		"email": "couve@mineira.com.br",
-		"telefone": "2199999999"
+    "cadeiras_comuns": 250,
+    "cadeiras_namoradeiras": 6,
+    "espaços_cadeirantes": 4,
+    "certificado_de_vistoria_anual": true,
+    "categoria_da_sala": "imax"
 	}
 ]
 ```
