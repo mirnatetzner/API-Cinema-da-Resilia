@@ -31,11 +31,11 @@ class ValidacoesSala extends ValidacoesService {
         }
         return false;
     }
-        /**
-         * 
-         * @param {number} cComum 
-         * @returns boolean 
-         */
+     /**
+     * 
+    * @param {number} cComum 
+    * @returns boolean 
+    */
     static validaEspaços_cadeirantes(cAcess) {
         if (!cAcess === Boolean) {
             cAcess = Number(cAcess)  
@@ -53,9 +53,11 @@ class ValidacoesSala extends ValidacoesService {
      * @returns boolean
      */
     static validaCertificado_de_vistoria_anual(certificado) {
-        if (certificado != 1 || 0) {
-            return false
-        }
+            if (certificado != 1 && 0) {
+                return false
+            } else{
+                return true
+            }
     }
 
     /**
@@ -64,36 +66,35 @@ class ValidacoesSala extends ValidacoesService {
      * @returns boolean 
      */
     static validaCategoria_da_sala(tipo) {
-        tipo = tipo.toLowerCase
+        tipo = tipo.toLowerCase()
         switch (tipo) {
-            case 'imax': 
+            case 'imax':
             case 'xd':
             case '4dx':
             case 'macro xe':
-            case 'xplus':
+            case 'xplus': 
             case 'reald':
             case 'd-box':
-                true
+                return true
                 break;
             default:
-                console.log(`Você deve escolher uma das opções: imax, xd, macro xe, 4dx, xplus, reald e d-box (certifique-se de escrever como no exemplo). `);
-        }
-      
+                console.log("Você deve escolher uma das opções: imax, xd, macro xe, 4dx, xplus, reald ou d-box (certifique-se de escrever como no exemplo).")
+                return false
+      } 
     }
-
 
 /**
  * 
- * @param {*} cComum 
- * @param {*} cNamo 
- * @param {*} cAcess 
- * @param {*} certificado 
- * @param {*} tipo 
- * @returns 
+ * @param {number} cComum 
+ * @param {number} cNamo 
+ * @param {number} cAcess 
+ * @param {boolean} certificado 
+ * @param {string} tipo 
+ * @returns boolean
  */
     static isValid(cComum, cNamo, cAcess, certificado, tipo) {
         return this.validaCadeiras_comuns(cComum) && this.validaCadeiras_namoradeiras(cNamo) && this.validaEspaços_cadeirantes(cAcess) && this.validaCertificado_de_vistoria_anual(certificado) && this.validaCategoria_da_sala(tipo);
     }
 }
 
-    export default ValidacoesSala
+export default ValidacoesSala
