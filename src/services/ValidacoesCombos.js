@@ -25,6 +25,10 @@ export default class ValidacoesCombos {
         return item3 != item2 && item3 !=item1
     }
 
+    static validaPreco(price) {
+        return price <= 50
+    }
+
     /**
      * @param {String} item1
      * @param {String} item2

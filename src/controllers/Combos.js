@@ -9,7 +9,7 @@ class Combos{
      */
     static combos(app){
         app.get("/combos", (req, res) => {
-            const response = CombosMetodos.adicaoNovosCombos()
+            const response = CombosMetodos.listarCombos(req)
             res.status(200).json(response)
         })
     }

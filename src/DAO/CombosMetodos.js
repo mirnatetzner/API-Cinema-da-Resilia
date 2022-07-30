@@ -13,6 +13,17 @@ class CombosMetodos {
         })
     }
 
+    static listarCombos(combos){
+        const body = Object.values(combos)
+
+        return body
+        // return new Promise((resolve, reject) => {
+        //     CombosDatabase.run(query, [...body], (e) => {
+        //         if(e){ reject(e.message)
+        //         } else { resolve({error: false} combos.values)
+        //         }  }))
+    }
+
     static createTableCombos() {
         this.activePragma()
 
@@ -35,20 +46,6 @@ class CombosMetodos {
                 }
             })
         })
-    }
-
-    static listarCombos(combos){
-        const body = Object.values(combos)
-
-        return body
-        // return new Promise((resolve, reject) => {
-        //     CombosDatabase.run(query, [...body], (e) => {
-        //         if(e){
-        //             reject(e.message)
-        //         } else {
-        //             resolve({error: false} combos.values)
-        //         }
-        //     }))
     }
     
     static adicaoNovosCombos(combos) {
