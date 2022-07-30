@@ -24,7 +24,7 @@ class FilmesDatabase {
             duracao VARCHAR,
             anoLancamento VARCHAR,
             diretor VARCHAR,
-            sinopse VARCHAR
+            sinopse TEXT
         )`
 
         return new Promise((resolve, reject) => {
@@ -45,12 +45,12 @@ class FilmesDatabase {
       
     }
     
-    static novoFilme(filme) {
+    static novoFilme(filmes) {
         const query = `
             INSERT INTO combos (name, genero, duracao, anoLancamento, diretor, sinopse)
             VALUES (?, ?, ?, ?, ?, ?)`
 
-        const body = Object.values(filme)
+        const body = Object.values(filmes)
 
         return new Promise((resolve, reject) => {
             FilmesDatabase.run(query, [...body], (e) => {
