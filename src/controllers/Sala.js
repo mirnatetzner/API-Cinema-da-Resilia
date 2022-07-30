@@ -4,7 +4,6 @@ import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import Database from "../infra/Database.js";
 
 DatabaseSalaMetodos.createTableSala()
-
 class Salas{
     static rotas(app){
         app.get("/sala", async (req,res)=>{

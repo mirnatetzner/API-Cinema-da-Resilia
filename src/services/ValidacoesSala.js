@@ -6,7 +6,7 @@ class ValidacoesSala extends ValidacoesService {
      * @param {number} cComum 
      * @returns boolean 
      */
-    static validaCadeiras_comuns(cComum) {
+    static validaCadeirasComuns(cComum) {
         if (!cComum === Boolean) {
             cComum = Number(cComum)  
             let Valid = Number.isInteger(cComum)
@@ -21,7 +21,7 @@ class ValidacoesSala extends ValidacoesService {
      * @param {number} cComum 
      * @returns boolean 
      */
-    static validaCadeiras_namoradeiras(cNamo) {
+    static validaCadeirasNamoradeiras(cNamo) {
         if (!cNamo === Boolean) {
             cNamo = Number(cNamo)  
             let Valid = Number.isInteger(cNamo)
@@ -36,7 +36,7 @@ class ValidacoesSala extends ValidacoesService {
     * @param {number} cComum 
     * @returns boolean 
     */
-    static validaEspaços_cadeirantes(cAcess) {
+    static validaEspaçosCadeirantes(cAcess) {
         if (!cAcess === Boolean) {
             cAcess = Number(cAcess)  
             let Valid = Number.isInteger(cAcess)
@@ -52,7 +52,7 @@ class ValidacoesSala extends ValidacoesService {
      * @param {boolean} cetificado 
      * @returns boolean
      */
-    static validaCertificado_de_vistoria_anual(certificado) {
+    static validaCertificadoDeVistoriaAnual(certificado) {
             if (certificado != 1 && 0) {
                 return false
             } else{
@@ -65,7 +65,7 @@ class ValidacoesSala extends ValidacoesService {
      * @param {string} tipo
      * @returns boolean 
      */
-    static validaCategoria_da_sala(tipo) {
+    static validaCategoriaDaSala(tipo) {
         tipo = tipo.toLowerCase()
         switch (tipo) {
             case 'imax':
@@ -93,7 +93,7 @@ class ValidacoesSala extends ValidacoesService {
  * @returns boolean
  */
     static isValid(cComum, cNamo, cAcess, certificado, tipo) {
-        return this.validaCadeiras_comuns(cComum) && this.validaCadeiras_namoradeiras(cNamo) && this.validaEspaços_cadeirantes(cAcess) && this.validaCertificado_de_vistoria_anual(certificado) && this.validaCategoria_da_sala(tipo);
+        return this.validaCadeirasComuns(cComum) && this.validaCadeirasNamoradeiras(cNamo) && this.validaEspaçosCadeirantes(cAcess) && this.validaCertificadoDeVistoriaAnual(certificado) && this.validaCategoriaDaSala(tipo);
     }
 }
 
