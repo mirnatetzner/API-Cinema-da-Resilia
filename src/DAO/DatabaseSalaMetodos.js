@@ -11,7 +11,7 @@ class DatabaseSalaMetodos extends DAO{
             cadeiras_namoradeiras INTEGER
             espaços_cadeirantes INTEGER
             certificado_de_vistoria_anual BIT NOT NULL
-            categoria_da_sala VARCHAR(20)
+            categoria_da_sala VARCHAR(10)
             )
             `
         const response = await this.createTable(query)

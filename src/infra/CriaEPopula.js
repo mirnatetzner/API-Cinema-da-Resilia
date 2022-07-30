@@ -1,23 +1,23 @@
 import DatabaseMetodos from "../DAO/DatabaseSalaMetodos.js";
 
 const Sala ={
-    id: 1,
-    cadeiras_comuns: 
-    cadeiras_namoradeiras: 
-    espaços_cadeirantes: 
-    certificado_de_vistoria_anual: 
-    categoria_da_sala:
+    cadeiras_comuns: 250,
+    cadeiras_namoradeiras: 6,
+    espaços_cadeirantes: 4,
+    certificado_de_vistoria_anual: true,
+    categoria_da_sala: "imax"
 
 }
 
 try {
+    await DAO.ativaChavesEstrangeiras()
 
-    const tabela = await DatabaseMetodos.createTableSala()
-    console.log(tabela)
+    const Sala = await DatabaseSalaMetodos.createTableSala()
+    console.log(Sala, ">>>>>> Sala")
 
-    const criada = await DatabaseMetodos.inserirSala(Sala)
-    console.log(criada)
+    const salaCriada = await DatabaseSalaMetodos.inserirSala(sala)
+    console.log(salaCriada, ">>>>>> Sala")
 
 } catch (e) {
-    console.log(e)
+    console.log("erro >>>>>>", e)
 }
