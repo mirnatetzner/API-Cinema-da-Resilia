@@ -7,10 +7,10 @@ class DatabaseSalaMetodos extends DAO{
 
         CREATE TABLE IF NOT EXISTS sala(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            cadeiras_comuns INTEGER
-            cadeiras_namoradeiras INTEGER
-            espaços_cadeirantes INTEGER
-            certificado_de_vistoria_anual BIT NOT NULL
+            cadeiras_comuns INTEGER,
+            cadeiras_namoradeiras INTEGER,
+            espaços_cadeirantes INTEGER,
+            certificado_de_vistoria_anual BIT NOT NULL,
             categoria_da_sala VARCHAR(10)
             )
             `

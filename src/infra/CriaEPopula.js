@@ -2,6 +2,7 @@ import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import DAO from "../DAO/DAO.js";
 
 const sala = {
+    id:1,
     cadeiras_comuns: 250,
     cadeiras_namoradeiras: 6,
     espaços_cadeirantes: 4,

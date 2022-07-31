@@ -1,6 +1,20 @@
+import Salas from "../controllers/Sala.js";
 import ValidacoesService from "./ValidacoesService.js";
 
 class ValidacoesSala extends ValidacoesService {
+   
+    static validaID(id){
+        if (!cComum === Boolean) {
+            cComum = Number(cComum)  
+            let Valid = Number.isInteger(cComum)
+            if (Valid && cComum > 0) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+       
     /**
      * 
      * @param {number} cComum 
