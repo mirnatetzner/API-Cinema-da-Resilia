@@ -1,44 +1,23 @@
-import CombosMetodos from "../DAO/CombosMetodos.js";
+import FilmesMetodos from "../DAO/FilmesMetodos.js";
+import DAO from "../DAO/DAO.js";
 
-const combos = {
-    name: "",
-    price: "",
-    item1: "", 
-    item2: "", 
-    item3: ""
+const filme ={
+            nome: "Jurassic World: Domínio",
+            genero: "Ação |  Aventura | Ficção Científica",
+            duracao: "02:26",
+            anoLancamento: "2022",
+            diretor: "Colin Trevorrow",
+            sinopse: "Em Jurassic World Domínio, sequência direta do longa de 2018, – Jurassic World: Reino Ameaçado – os dinossauros agora circulam livres pelo mundo humano após os acontecimentos recentes. Alguns conseguem coexistir de forma pacífica em sociedade, todavia, outros trazem problemas. Os ex-funcionários do parque dos dinossauros, Claire Bryce Dallas Howard e Owen Chris Pratt se envolvem nessa problemática e buscam uma solução, contando com a ajuda dos cientistas experientes em dinossauros, que retornam dos filmes antecessores. Capítulo final da trilogia iniciada por Jurassic World – O Mundo dos Dinossauros"
 }
 
-    try {
-        const criaCombos = await CombosMetodos.createTableCombos()
-        console.log(criaCombos)
+try{
+    await DAO.activePragma()
 
-        const addNovoCombo = await CombosMetodos.adicaoNovosCombos(combos)
-        console.log(addNovoCombo)
+    const filmes = await FilmesMetodos.createTableFilmes()
+    console.log(filmes, ">>>>>> Filmes")
 
-    } catch(e) {
-        console.log(e)
-
-    }
-
-    const filmes = {
-        nome: "",
-        genero: "",
-        duracao: "", 
-        anoLancamento: "", 
-        diretor: "",
-        sinopse: ""
-    }
-
-    
-    try {
-        
-        const novoFilme = await FilmesMetodos.createTableFilmes()
-        console.log(novoFilme)
-
-        const addNovoFilme = await FilmesMetodos.novoFilme(filmes)
-        console.log(addNovoFilme)
-
-    } catch(e) {
-        console.log(e)
-
-    }
+    const filmeCriado = await FilmesMetodos.novoFilme()
+    console.log(filmeCriado, ">>>>>> Filme Inserido")
+}catch{
+    console.log("erro >>>>>>", e)
+}

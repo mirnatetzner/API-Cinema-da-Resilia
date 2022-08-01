@@ -47,7 +47,7 @@ class DAO{
         })
     })
 }
-    static atualizaFilmePorID(entidade, id, query){
+    static atualizarPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
             FilmesDatabase.run(query,[...body, id], (e, result) => {
