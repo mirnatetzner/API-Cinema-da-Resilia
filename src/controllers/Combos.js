@@ -32,12 +32,7 @@ class Combos{
                 res.status(404).json(error.message)
             }
         })
-
-        app.post("/combos", async (req, res) => {
-            const
-        })
     }
-
 
 }
 
