@@ -1,6 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import Combos from "./src/controllers/Combos.js"
+// import Combos from "./src/controllers/Combos.js"
 import Filmes from "./src/controllers/Filmes.js"
 
 dotenv.config()
@@ -17,5 +17,5 @@ const app = express()
 
 app.use(express.json())
 
-Combos.combos(app)
-Filmes.filmes(app)
+// Combos.combos(app)
+Filmes.rotas(app)
