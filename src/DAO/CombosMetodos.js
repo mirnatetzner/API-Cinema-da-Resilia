@@ -13,17 +13,26 @@ class CombosMetodos {
         })
     }
 
-    static listarCombos(combos){
-        const body = Object.values(combos)
-
-        return body
-        // return new Promise((resolve, reject) => {
-        //     CombosDatabase.run(query, [...body], (e) => {
-        //         if(e){ reject(e.message)
-        //         } else { resolve({error: false} combos.values)
-        //         }  }))
+    /**
+     * listagem de combos por id e name
+     */
+    static async listarCombos(combos){
+        const query = ` SELECT * FROM combos`
+        const response = await this.listAll(query)
+        return response
+    }     
+    static async listarCombosId(id){
+        const query = ` SELECT * FROM combos WHERE id = ?`
+        const response = await this.listarPorId(id, query)
+        return response
+    }
+    static async listarCombosNome(name){
+        const query = ` SELECT * FROM combos WHERE name = ?`
+        const response = await this.listarPorNome(id, query)
+        return response
     }
 
+    
     static createTableCombos() {
         this.activePragma()
 
