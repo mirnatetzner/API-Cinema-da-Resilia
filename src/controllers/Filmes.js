@@ -11,12 +11,12 @@ class Filmes{
      */
     static rotas(app){
         app.get("/filmes", async (req, res) => {
-            const response = await FilmesMetodos.listarFilmes()
+            const response = await FilmesMetodos.listarTodosFilmes()
             res.status(200).json(response)
         })
 
         app.get("/filmes/:id", async (req, res) => {
-            const response = await FilmesMetodos.listarFilmes(req.params.id)
+            const response = await FilmesMetodos.listarFilmePorId(req.params.id)
             res.status(200).json(response)
         })
 

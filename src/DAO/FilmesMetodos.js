@@ -24,17 +24,17 @@ class FilmesMetodos extends DAO{
         return response
     }
 
-    // static listarTodosFilmes(){
-    //     const query = `SELECT * FROM filmes`
-    //     const response = await this.listarTodosFilmes(query)
-    //     return response
-    // }
+    static async listarTodosFilmes(){
+        const query = `SELECT * FROM filmes`
+        const response = await this.listarTodosFilmes(query)
+        return response
+    }
 
-    // static listarFilmesPorId(id){
-    //     const query = `SELECT * FROM filmes WHERE id=?`
-    //     const response = await this.listarFilmesPorId(query)
-    //     return response
-    // }
+    static async listarFilmePorId(id){
+        const query = `SELECT * FROM filmes WHERE id= ?`
+        const response = await this.listarFilmePorId(id, query)
+        return response
+    }
     
     // static deletaFilmePorId(id){
     //     const query = `DELETE * FROM filmes WHERE id=?`
