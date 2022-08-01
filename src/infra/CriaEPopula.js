@@ -1,11 +1,11 @@
 import CombosMetodos from "../DAO/CombosMetodos.js";
 
 const combos = {
-    name: "",
-    price: "",
-    item1: "", 
-    item2: "", 
-    item3: ""
+    name: "MEGA",
+    price: "30.00",
+    item1: "Pipoca Mega", 
+    item2: "Coca-Cola 400ml", 
+    item3: "Mentos"
 }
     try {
         const criaCombos = await CombosMetodos.createTableCombos()

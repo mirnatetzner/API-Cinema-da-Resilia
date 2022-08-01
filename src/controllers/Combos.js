@@ -3,11 +3,6 @@ import CombosMetodos from "../DAO/CombosMetodos.js"
 import CombosDatabase from "../infra/CombosDatabase.js"
 
 class Combos{
-    /**
-     * 
-     * @param {*} app 
-     * 
-     */
     static combos(app){
         app.get("/combos", (req, res) => {
             const response = CombosMetodos.listarCombos(req)
@@ -25,7 +20,7 @@ class Combos{
                 res.status(404).json(error.message)
             }
         })
-        
+
         app.get("/combos/name:", async (req, res) => {
             try {
                 const combos = await CombosMetodos.listarCombosNome(req.params.name)
@@ -38,7 +33,9 @@ class Combos{
             }
         })
 
-        app.post()
+        app.post("/combos", async (req, res) => {
+            const
+        })
     }
 
 

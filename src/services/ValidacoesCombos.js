@@ -5,7 +5,12 @@ export default class ValidacoesCombos {
      * @returns Object
      */
     static validaName(name){
-        return name.lenght >= 4
+        nomeCombo = name.toUpperCase()
+        if (nomeCombo.length >= 4 && nomeCombo.length <= 12){
+            return nomeCombo
+        } else {
+            return "Nome de combo inválido"
+        }
     }
 
     /**
@@ -26,7 +31,7 @@ export default class ValidacoesCombos {
     }
 
     static validaPreco(price) {
-        return price <= 50
+        return price <= 50.00
     }
 
     /**
