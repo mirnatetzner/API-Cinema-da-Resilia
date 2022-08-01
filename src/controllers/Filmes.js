@@ -26,11 +26,11 @@ class Filmes{
             res.status(201).json(response)
         })
 
-        app.put("/filmes/:id", (req, res) => {
-            const filme = new FilmesModels(...Object.values(req.body))
-            const response = await FilmesMetodos.atualizarPorId(filme)
-            res.status(201).json(response)
-        })
+        // app.put("/filmes/:id", (req, res) => {
+        //     const filme = new FilmesModels(...Object.values(req.body))
+        //     const response = await FilmesMetodos.atualizarPorId(filme)
+        //     res.status(201).json(response)
+        // })
 
         app.patch("filmes/:id", async (req, res) => {
             const filme = await FilmesMetodos.atualizarPropriedadesPorId(req.params.id, req.bpdy)
