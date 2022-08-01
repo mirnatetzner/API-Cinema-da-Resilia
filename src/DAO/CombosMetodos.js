@@ -1,6 +1,7 @@
 import CombosDatabase from "../infra/CombosDatabase.js"
+import DAO from "./DAO.js"
 
-class CombosMetodos {
+class CombosMetodos extends DAO {
     static activePragma(){
         const pragma = "PRAGMA foreign_keys = ON"
 
@@ -28,7 +29,7 @@ class CombosMetodos {
     }
     static async listarCombosNome(name){
         const query = ` SELECT * FROM combos WHERE name = ?`
-        const response = await this.listarPorNome(id, query)
+        const response = await this.listarPorId(name, query)
         return response
     }
 
