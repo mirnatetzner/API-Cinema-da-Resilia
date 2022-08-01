@@ -2,64 +2,23 @@ import Salas from "../controllers/Sala.js";
 import ValidacoesService from "./ValidacoesService.js";
 
 class ValidacoesSala extends ValidacoesService {
-   
-    static validaID(id){
-        if (!cComum === Boolean) {
-            cComum = Number(cComum)  
-            let Valid = Number.isInteger(cComum)
-            if (Valid && cComum > 0) {
+ 
+    /**
+     * 
+     * @param {number} cComum 
+     * @returns boolean 
+     */
+    static validaCadeira(num) {
+        if (!num === Boolean) {
+            num = Number(num)  
+            let Valid = Number.isInteger(num)
+            if (Valid && num > 0) {
                 return true;
             }
         }
         return false;
+    }
 
-    }
-       
-    /**
-     * 
-     * @param {number} cComum 
-     * @returns boolean 
-     */
-    static validaCadeirasComuns(cComum) {
-        if (!cComum === Boolean) {
-            cComum = Number(cComum)  
-            let Valid = Number.isInteger(cComum)
-            if (Valid && cComum > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-    /**
-     * 
-     * @param {number} cComum 
-     * @returns boolean 
-     */
-    static validaCadeirasNamoradeiras(cNamo) {
-        if (!cNamo === Boolean) {
-            cNamo = Number(cNamo)  
-            let Valid = Number.isInteger(cNamo)
-            if (Valid && cNamo > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-     /**
-     * 
-    * @param {number} cComum 
-    * @returns boolean 
-    */
-    static validaEspaçosCadeirantes(cAcess) {
-        if (!cAcess === Boolean) {
-            cAcess = Number(cAcess)  
-            let Valid = Number.isInteger(cAcess)
-            if (Valid && cAcess > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     /**
      * 
@@ -67,7 +26,7 @@ class ValidacoesSala extends ValidacoesService {
      * @returns boolean
      */
     static validaCertificadoDeVistoriaAnual(certificado) {
-            if (certificado != 1 && 0) {
+            if (typeof certificado != "boolean") {
                 return false
             } else{
                 return true
@@ -92,7 +51,6 @@ class ValidacoesSala extends ValidacoesService {
                 return true
                 break;
             default:
-                console.log("Você deve escolher uma das opções: imax, xd, macro xe, 4dx, xplus, reald ou d-box (certifique-se de escrever como no exemplo).")
                 return false
       } 
     }
@@ -107,7 +65,7 @@ class ValidacoesSala extends ValidacoesService {
  * @returns boolean
  */
     static isValid(cComum, cNamo, cAcess, certificado, tipo) {
-        return this.validaCadeirasComuns(cComum) && this.validaCadeirasNamoradeiras(cNamo) && this.validaEspaçosCadeirantes(cAcess) && this.validaCertificadoDeVistoriaAnual(certificado) && this.validaCategoriaDaSala(tipo);
+        return this.validaCadeira(cComum) && this.validaCadeira(cNamo) && this.validaCadeira(cAcess) && this.validaCertificadoDeVistoriaAnual(certificado) && this.validaCategoriaDaSala(tipo);
     }
 }
 

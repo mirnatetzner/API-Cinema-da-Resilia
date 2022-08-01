@@ -1,5 +1,5 @@
 class SalaModel{
-    constructor(id, cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala){
+    constructor(cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala){
         this.cadeiras_comuns = cadeiras_comuns
         this.cadeiras_namoradeiras = cadeiras_namoradeiras
         this.espaços_cadeirantes = espaços_cadeirantes

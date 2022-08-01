@@ -19,7 +19,7 @@ class DatabaseSalaMetodos extends DAO{
     }
 
     static async inserirSala(Sala){
-        const query = `INSERT INTO Sala (id, cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) VALUES (?,?,?,?,?,?)`
+        const query = `INSERT INTO Sala (cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) VALUES (?,?,?,?,?)`
         const response = await this.inserir(Sala, query)
         return response
     }
