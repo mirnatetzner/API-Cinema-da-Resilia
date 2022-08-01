@@ -1,4 +1,4 @@
-import SalaModel from "../models/Models.js";
+import SalaModel from "../models/SalaModels.js";
 import ValidacoesSala from "../services/ValidacoesSala.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import Database from "../infra/Database.js";
@@ -33,7 +33,9 @@ class Salas{
                     const response = await DatabaseSalaMetodos.inserirSala(Sala)
                     res.status(201).json(response)
                 } else {
-                    throw new Error("Requisição incompleta, revise o corpo da mesma")
+                    throw new Error (`${isValid}`)
+                    //("Requisição incompleta, revise o corpo da mesma");
+                    
                 }
             } catch (error) {
                 res.status(400).json(error.message)

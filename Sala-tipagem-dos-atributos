@@ -12,7 +12,7 @@
 ## certificado_de_vistoria_anual BIT NOT NULL
 
 ## categoria da sala VARCHAR(256)
- IMAX, XD, Macro XE, 4DX, XPlus, RealD e D-Box
+ IMAX, XD, Macro XE, XPlus, RealD e D-Box
 
 
 

@@ -1,4 +1,5 @@
-export default class ValidacoesService{
-  
- 
+export default class ValidacoesService {
+    static initialMethod(){
+        console.log("inicio");
+    }
 }
