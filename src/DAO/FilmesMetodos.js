@@ -36,11 +36,11 @@ class FilmesMetodos extends DAO{
         return response
     }
     
-    // static deletaFilmePorId(id){
-    //     const query = `DELETE * FROM filmes WHERE id=?`
-    //     const response = await this.deletarFilmesPorId(query)
-    //     return response
-    // }
+    static async deletaFilmePorId(id){
+        const query = `DELETE * FROM filmes WHERE id=?`
+        const response = await this.deletarFilmesPorId(query)
+        return response
+    }
     
 }
 

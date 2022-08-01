@@ -21,9 +21,15 @@ class Filmes{
         })
 
         app.post("/filmes", async (req, res) => {
-            const filme = new FilmesModels(...Object.values(req.body))
-            const response = await FilmesMetodos.novoFilme(filme)
-            res.status(201).json(response)
+            try {
+                const filme = new FilmesModels(...Object.values(req.body))
+                const response = await FilmesMetodos.novoFilme(filme)
+                res.status(201).json(response)
+                
+            } catch (error) {
+                res.status(400).json(error.message)
+            }
+
         })
 
         // app.put("/filmes/:id", (req, res) => {
@@ -32,8 +38,8 @@ class Filmes{
         //     res.status(201).json(response)
         // })
 
-        app.patch("filmes/:id", async (req, res) => {
-            const filme = await FilmesMetodos.atualizarPropriedadesPorId(req.params.id, req.bpdy)
+        app.delete("filmes/:id", async (req, res) => {
+            const filme = await FilmesMetodos.deletaFilmePorId(req.params.id, req.bpdy)
             res.status(200).json(response)
         })
 
