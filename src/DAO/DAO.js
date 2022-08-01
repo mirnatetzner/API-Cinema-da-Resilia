@@ -1,10 +1,10 @@
-import FilmesDatabase from "../infra/FilmesDatabase";
+import FilmesDatabase from "../infra/FilmesDatabase.js";
 
 class DAO{
     static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON"
+        const query = "PRAGMA foreign_keys = ON"
 
-        FilmesDatabase.run(pragma, (e) => {
+        FilmesDatabase.run(query, (e) => {
             if(e){
                 console.log(e)
             } else {
@@ -13,7 +13,63 @@ class DAO{
         })
     }
 
-    
+    static createTable(query){
+        return new Promise((resolve, reject) => {
+            FilmesDatabase.run(query, (e) => {
+                if(e){
+                    reject(e.message)
+                }else{
+                    resolve("Tabela Criada com Sucesso")
+                }
+            })
+        })
+    }
+    static listarTodosFilmes(query){
+    return new Promise((resolve, reject) => {
+        FilmesDatabase.all(query, (e, resultado) => {
+            if(e){
+                reject(e.message)
+            }else{
+                resolve(resultado)
+            }
+        })
+    })
+}
+
+    static listarFilmesPorId(id, query){
+    return new Promise((resolve, reject) =>{
+        FilmesDatabase.get(query, id, (e) =>{
+            if(e){
+                reject(e.message)
+            }else{
+                resolve(resultado)
+            }
+        })
+    })
+}
+    static atualizaFilmePorID(entidade, id, query){
+        const body = Object.values(entidade)
+        return new Promise((resolve, reject) => {
+            FilmesDatabase.run(query,[...body, id], (e, result) => {
+                if(e){
+                    reject(e.message)
+                }else{
+                    resolve(result)
+                }
+            })
+        })
+    }
+    static deletaFilmePorId(query, id){
+        return new Promise((resolve, reject) => {
+            FilmesDatabase.run(query, id, (e) => {
+                if(e){
+                    reject(e.message)
+                }else{
+                    resolve({erro: false, message: `Registro com id ${id} deletado com sucesso`})
+                }
+            })
+        })
+    }
 
 }
 
