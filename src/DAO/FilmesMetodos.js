@@ -1,21 +1,7 @@
-import FilmesDatabase from "../infra/FilmesDatabase.js"
+import DAO from "./DAO.js"
 
-class FilmesDatabase {
-    static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON"
-
-        FilmesDatabase.run(pragma, (e) => {
-            if(e){
-                console.log(e)
-            } else {
-                console.log("Chaves estrangeiras ativas")
-            }
-        })
-    }
-
-    static createTableFilmes() {
-        this.activePragma()
-
+class FilmesMetodos extends DAO{
+    static async createTableFilmes() {
         const query = `
         CREATE TABLE IF NOT EXISTS filmes(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,43 +12,37 @@ class FilmesDatabase {
             diretor VARCHAR,
             sinopse TEXT
         )`
-
-        return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, (e) => {
-                if(e) {
-                    reject(e.message)
-                } else {
-                    resolve("Tabela filmes criada com sucesso")
-                }
-            })
-        })
+            const response = await this.createTableFilmes(query)
+            return response
     }
 
-    static listarFilmes(filmes){
-        const body = Object.values(filmes)
-
-        return body
-      
-    }
-    
-    static novoFilme(filmes) {
+    static async novoFilme(filme) {
         const query = `
             INSERT INTO combos (name, genero, duracao, anoLancamento, diretor, sinopse)
             VALUES (?, ?, ?, ?, ?, ?)`
-
-        const body = Object.values(filmes)
-
-        return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, [...body], (e) => {
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve({error: false, message: "Filme adicionado com sucesso!"})
-                }
-            })
-        })
+        const response = await this.novoFilme(filme, query)
+        return response
     }
+
+    static listarTodosFilmes(){
+        const query = `SELECT * FROM filmes`
+        const response = await this.listarTodosFilmes(query)
+        return response
+    }
+
+    static listarFilmesPorId(id){
+        const query = `SELECT * FROM filmes WHERE id=?`
+        const response = await this.listarFilmesPorId(query)
+        return response
+    }
+    
+    static deletarFilmesPorId(id){
+        const query = `DELETE * FROM filmes WHERE id=?`
+        const response = await this.deletarFilmesPorId(query)
+        return response
+    }
+    
 }
 
-export default FilmesDatabase
+export default FilmesMetodos
 
