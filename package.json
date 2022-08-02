@@ -1,16 +1,16 @@
 {
   "name": "api-cinema-da-resilia",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Rest com CRUD das operações no padrão HTTP que faz requisições ao \"Cinema da Resilia\"",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mirnatetzner/API-Cinema-da-Resilia.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -20,9 +20,8 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "path": "^0.12.7",
-    "sqlite3": "^5.0.11",
-    "url": "^0.11.0"
+    "sqlite3": "^5.0.10"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {}
 }
