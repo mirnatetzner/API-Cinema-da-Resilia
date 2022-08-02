@@ -74,7 +74,7 @@ class DAO{
             })
         })
     }
-    static deletaPorId(query, id){
+    static deletarPorId(query, id){
         return new Promise((resolve, reject) => {
             FilmesDatabase.run(query, id, (e) => {
                 if(e){
