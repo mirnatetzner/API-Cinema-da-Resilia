@@ -24,6 +24,21 @@ class DAO{
             })
         })
     }
+
+    static inserirFilme(entidade, query){
+        const body = Object.values(entidade)
+
+        return new Promise((resolve, reject) => {
+            FilmesDatabase.run(query, [...body], (e) =>{
+                if(e){
+                    reject(e.message)
+                    console.log(message)
+                }else{
+                    resolve({error: false, message: "Filme cadastrado com sucesso!"})
+        }})
+        })
+    }
+
     static listarTodosFilmes(query){
     return new Promise((resolve, reject) => {
         FilmesDatabase.all(query, (e, resultado) => {

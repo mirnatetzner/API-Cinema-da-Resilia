@@ -17,10 +17,8 @@ class FilmesMetodos extends DAO{
     }
 
     static async novoFilme(filme) {
-        const query = `
-            INSERT INTO combos (nome, genero, duracao, anoLancamento, diretor, sinopse)
-            VALUES (?, ?, ?, ?, ?, ?)`
-        const response = await this.novoFilme(filme, query)
+        const query = `INSERT INTO filmes (nome, genero, duracao, anoLancamento, diretor, sinopse) VALUES (?, ?, ?, ?, ?, ?)`
+        const response = await this.inserirFilme(filme, query)
         return response
     }
 
