@@ -1,69 +1,52 @@
-# API-Cinema-da-Resilia
+# *nomedoprojeto* API
+API Rest com CRUD das operações no padrão HTTP que faz requisições ao "Cinema da Resilia"
 
-## Como instalar:
-
-* Abra seu terminal e cole o seguinte comando na pasta de sua preferência:
-
-```
-git clone https://github.com/mirnatetzner/API-Cinema-da-Resilia.git
-```
-
-* Navegue até a pasta do projeto com o seguinte comando:
-
-```
-cd API-Cinema-da-Resilia
+ ## Instalações necessárias
+ As dependências utilizadas nessa aplicação foram: Express, SQLite3, Dotenv, Path, Url. Para sua instalação, utilizar, separadamente, os comandos abaixo:
+```npm i express
+   npm i sqlite3
+   npm i sqlite3
+   npm i dotenv
+   npm i path
+   npm i url
 ```
 
-* Instale as dependencias necessárias com o seguinte comando:
-
-```
-npm i
-```
-
-* Inicie o projeto rodando o comando:
-
-```
-npm start
-```
-
-## Exemplo de rotas:
-### Post: url/sala
-
-Objeto de requisição:
-<br>
-
-```json
-{
-    "cadeiras_comuns": 250,
-    "cadeiras_namoradeiras": 6,
-    "espaços_cadeirantes": 4,
-    "certificado_de_vistoria_anual": true,
-    "categoria_da_sala": "imax"
-}
-```
-<br>
-Exemplo de resposta:
-<br>
-
-```json
-[
-	{
-    "cadeiras_comuns": 250,
-    "cadeiras_namoradeiras": 6,
-    "espaços_cadeirantes": 4,
-    "certificado_de_vistoria_anual": true,
-    "categoria_da_sala": "imax"
-	}
-]
-```
-## Dependências necessárias para configuração de ambiente:
-### Express
-```npm i express```
-### Sqlite3
-```npm i sqlite3```
-### Dotenv
-```npm i dotenv```
-### Path
-```npm i path```
-### Url
-```npm i url```
+## Contribuidores 👩‍💻👨‍💻
+  <table>
+    <tr align='center'>    
+      <td align="center">
+          <a href="https://github.com/mirnatetzner">
+            <img src='https://avatars.githubusercontent.com/u/85193127?v=4' width="170px;" alt="Foto de perfil do Github"/><br>
+            <sub>
+              <b>Mirna Tetzner</b>
+            </sub>
+          </a>
+        </td>
+      <td align="center">
+          <td align="center">
+          <a href="https://github.com/alicebranq">
+            <img src='https://avatars.githubusercontent.com/u/102565368?v=4' width="170px;" alt="Foto de perfil do Github"/><br>
+            <sub>
+              <b>Alice Branquinho</b>
+            </sub>
+          </a>
+        </td>
+      <td align="center">
+          <a href="https://github.com/systemilc">
+            <img src='https://avatars.githubusercontent.com/u/34551203?v=4' width="170px;" alt="Foto de perfil do Github"/><br>
+            <sub>
+              <b>Isaac Costa</b>
+            </sub>
+          </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/joaofmds">
+          <img src='https://avatars.githubusercontent.com/u/95502785?v=4' width="170px;" alt="Foto de perfil do Github"/><br>
+            <sub>
+              <b>João Souza</b>
+            </sub>
+          </a>
+      </td>
+    </tr>
+   </table>
+ 
