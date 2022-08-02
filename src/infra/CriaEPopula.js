@@ -21,6 +21,6 @@ try{
 
     const inserirFilme = await FilmesMetodos.novoFilme(filme)
     console.log(inserirFilme, ">>>>>> Filme Inserido")
-}catch{
-    console.log("erro >>>>>>", e)
+}catch(e){
+    console.log(e.messsage)
 }

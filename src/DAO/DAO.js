@@ -1,12 +1,12 @@
 import FilmesDatabase from "../infra/FilmesDatabase.js";
 
 class DAO{
-    static activePragma(){
-        const query = "PRAGMA foreign_keys = ON"
+    static async activePragma(){
+        const query = 'PRAGMA foreign_keys = ON';
 
         FilmesDatabase.run(query, (e) => {
             if(e){
-                console.log(e)
+                console.log(e.message)
             } else {
                 console.log("Chaves estrangeiras ativas")
             }
@@ -32,11 +32,10 @@ class DAO{
             FilmesDatabase.run(query, [...body], (e) =>{
                 if(e){
                     reject(e.message)
-                    console.log(message)
                 }else{
                     resolve({error: false, message: "Filme cadastrado com sucesso!"})
         }})
-        })
+     })
     }
 
     static listarTodosFilmes(query){
@@ -53,7 +52,7 @@ class DAO{
 
     static listarFilmesPorId(id, query){
     return new Promise((resolve, reject) =>{
-        FilmesDatabase.get(query, id, (e) =>{
+        FilmesDatabase.get(query, id, (e, resultado) =>{
             if(e){
                 reject(e.message)
             }else{

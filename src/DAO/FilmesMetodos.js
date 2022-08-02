@@ -5,14 +5,14 @@ class FilmesMetodos extends DAO{
         const query = `
         CREATE TABLE IF NOT EXISTS filmes(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name VARCHAR,
+            nome VARCHAR,
             genero VARCHAR,
             duracao VARCHAR,
             anoLancamento VARCHAR,
             diretor VARCHAR,
             sinopse TEXT
         )`
-            const response = await this.createTableFilmes(query)
+            const response = await this.createTable(query)
             return response
     }
 
