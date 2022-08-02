@@ -4,8 +4,11 @@ export default class ValidacoesCombos {
      * @param {String} name 
      * @returns Object
      */
-    static validaName(name){
-        return name.lenght >= 4
+    static validaName(name){                                   
+        const nomeCombo = name.toUpperCase()
+        if (nomeCombo.length >= 4 && nomeCombo.length <= 12){
+            return nomeCombo
+        } 
     }
 
     /**
@@ -15,18 +18,16 @@ export default class ValidacoesCombos {
      * @param {String} item3 
      * @returns Object
      */
-    static validaItem1(item1, item2, item3){
-        return item1 != item2 && item1 !=item3
-    }
-    static validaItem2(item1, item2, item3){
-        return item2 != item1 && item2 !=item3
-    }
-    static valideItem3(item1, item2, item3){
-        return item3 != item2 && item3 !=item1
+    static validaItens(...itens){
+        const itensOriginais = [...itens]
+        const itensFilter = [... new Set (itensOriginais)]
+        return itensOriginais.length == itensFilter.length
     }
 
     static validaPreco(price) {
-        return price <= 50
+        if (price.length <=60.00 || price.length >=15.00) {
+            return price
+        }
     }
 
     /**
@@ -35,8 +36,9 @@ export default class ValidacoesCombos {
      * @param {String} item3
      * @returns Object
      */
-    static validaItens(){
+    static validaCombos(){
         return this.validaName(name)
+            && this.validaPreco(price)
             && this.validaItem1(item1, item2, item3) 
             && this.validaItem2(item1, item2, item3) 
             && this.validaItem3(item1, item2, item3)

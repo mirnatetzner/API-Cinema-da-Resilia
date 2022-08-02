@@ -1,10 +1,11 @@
-import CombosDatabase from "../infra/CombosDatabase.js"
+import DAO from "./DAO.js"
+import Database from "../infra/Database.js"
 
-class CombosMetodos {
+class CombosMetodos extends DAO {
     static activePragma(){
         const pragma = "PRAGMA foreign_keys = ON"
 
-        CombosDatabase.run(pragma, (e) => {
+        Database.run(pragma, (e) => {
             if(e){
                 console.log(e)
             } else {
@@ -13,17 +14,30 @@ class CombosMetodos {
         })
     }
 
-    static listarCombos(combos){
-        const body = Object.values(combos)
-
-        return body
-        // return new Promise((resolve, reject) => {
-        //     CombosDatabase.run(query, [...body], (e) => {
-        //         if(e){ reject(e.message)
-        //         } else { resolve({error: false} combos.values)
-        //         }  }))
+    /**
+     * listagem de combos por id e name
+     */
+    static async listarCombos(combos){
+        const query = ` SELECT * FROM combos`
+        const response = await this.listAll(query)
+        return response
+    }     
+    static async listarCombosId(id){
+        const query = ` SELECT * FROM combos WHERE id = ?`
+        const response = await this.listarPorId(id, query)
+        return response
+    }
+    static async listarCombosNome(name){
+        const query = ` SELECT * FROM combos WHERE name = ?`
+        const response = await this.listarPorId(name, query)
+        return response
     }
 
+    static async inserirCombo(combo){
+        const query = ` INSERT INTO combos`
+    }
+
+    
     static createTableCombos() {
         this.activePragma()
 
@@ -56,7 +70,7 @@ class CombosMetodos {
         const body = Object.values(combos)
 
         return new Promise((resolve, reject) => {
-            CombosDatabase.run(query, [...body], (e) => {
+            Database.run(query, [...body], (e) => {
                 if(e){
                     reject(e.message)
                 } else {
