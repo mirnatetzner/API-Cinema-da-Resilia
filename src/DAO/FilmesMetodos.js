@@ -1,5 +1,5 @@
 import DAO from "./DAO.js"
-import Database from "../infra/Database.js"
+// import Database from "../infra/Database.js"
 
 class FilmesMetodos extends DAO{
     static async createTableFilmes() {
@@ -17,14 +17,15 @@ class FilmesMetodos extends DAO{
             return response
     }
 
-    static async novoFilme(filme) {
+    static async inserirFilme(filme) {
         const query = `INSERT INTO filmes (nome, genero, duracao, anoLancamento, diretor, sinopse) VALUES (?, ?, ?, ?, ?, ?)`
-        const response = await this.inserirFilme(filme, query)
+        const response = await this.inserir(filme, query)
         return response
     }
-    static async listarFilmes(filmes){
+
+    static async listarTodosFilmes(){
         const query = ` SELECT * FROM filmes`
-        const response = await this.listAll(query)
+        const response = await this.listarTodos(query)
         return response
     }
 

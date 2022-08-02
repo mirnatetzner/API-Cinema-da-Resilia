@@ -1,6 +1,7 @@
 import FilmesModels from "../Models/FilmesModel.js"
 import FilmesMetodos from "../DAO/FilmesMetodos.js"
 import FilmesDatabase from "../infra/FilmesDatabase.js"
+import DAO from "../DAO/DAO.js"
 
 
 class Filmes{
@@ -10,8 +11,8 @@ class Filmes{
      * 
      */
     static rotas(app){
-        app.get("/filmes", (req, res) => {
-            const response = FilmesMetodos.listarFilmes(req)
+        app.get("/filmes", async (req, res) => {
+            const response = await FilmesMetodos.listarTodosFilmes()
             res.status(200).json(response)
         })
 
@@ -23,7 +24,7 @@ class Filmes{
         app.post("/filmes", async (req, res) => {
             try {
                 const filme = new FilmesModels(...Object.values(req.body))
-                const response = await FilmesMetodos.novoFilme(filme)
+                const response = await  FilmesMetodos.inserirFilme(filme)
                 res.status(201).json(response)
                 
             } catch (error) {
