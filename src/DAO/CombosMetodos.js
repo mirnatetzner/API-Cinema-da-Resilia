@@ -1,11 +1,11 @@
-import CombosDatabase from "../infra/CombosDatabase.js"
 import DAO from "./DAO.js"
+import Database from "../infra/Database.js"
 
 class CombosMetodos extends DAO {
     static activePragma(){
         const pragma = "PRAGMA foreign_keys = ON"
 
-        CombosDatabase.run(pragma, (e) => {
+        Database.run(pragma, (e) => {
             if(e){
                 console.log(e)
             } else {
@@ -70,7 +70,7 @@ class CombosMetodos extends DAO {
         const body = Object.values(combos)
 
         return new Promise((resolve, reject) => {
-            CombosDatabase.run(query, [...body], (e) => {
+            Database.run(query, [...body], (e) => {
                 if(e){
                     reject(e.message)
                 } else {

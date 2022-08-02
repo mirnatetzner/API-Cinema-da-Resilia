@@ -29,41 +29,62 @@ class DAO{
     static inserir(entidade, query){
         const body = Object.values(entidade)
 
-        return new Promise((resolve, reject)=>{
-            Database.run(query, [...body], (e)=>{
+        return new Promise((resolve, reject) => {
+            Database.run(query, [...body], (e) =>{
                 if(e){
                     reject(e.message)
-                } else {
-                    resolve({error: false, message: "Entidade cadastrada com sucesso!"})
-                }
-            })
-        })
+                }else{
+                    resolve({error: false, message: "Cadastrado com sucesso!"})
+        }})
+     })
     }
 
     static listarTodos(query){
-        return new Promise((resolve, reject)=> {
-            Database.all(query, (e, resultado)=>{
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve(resultado)
-                }
-            })
+    return new Promise((resolve, reject) => {
+        Database.all(query, (e, resultado) => {
+            if(e){
+                reject(e.message)
+            }else{
+                resolve(resultado)
+            }
         })
-    }
+    })
+}
 
     static listarPorId(id, query){
-        return new Promise((resolve, reject)=> {
-            Database.get(query, id, (e, resultado)=>{
+    return new Promise((resolve, reject) =>{
+        Database.get(query, id, (e, resultado) =>{
+            if(e){
+                reject(e.message)
+            }else{
+                resolve(resultado)
+            }
+        })
+    })
+}
+    static atualizarPorId(entidade, id, query){
+        const body = Object.values(entidade)
+        return new Promise((resolve, reject) => {
+            Database.run(query,[...body, id], (e, result) => {
                 if(e){
-                    reject(e)
-                } else {
-                    resolve(resultado)
+                    reject(e.message)
+                }else{
+                    resolve(result)
                 }
             })
         })
     }
-
+    static deletaPorId(query, id){
+        return new Promise((resolve, reject) => {
+            FilmesDatabase.run(query, id, (e) => {
+                if(e){
+                    reject(e.message)
+                }else{
+                    resolve({erro: false, message: `Registro por Id ${id} deletado com sucesso`})
+                }
+            })
+        })
+    }
 }
 
 export default DAO
