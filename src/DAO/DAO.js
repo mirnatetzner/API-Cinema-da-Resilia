@@ -1,46 +1,47 @@
-import FilmesDatabase from "../infra/FilmesDatabase.js";
+import Database from "../infra/Database.js";
 
 class DAO{
-    static async activePragma(){
-        const query = 'PRAGMA foreign_keys = ON';
+    static async ativaChavesEstrangeiras(){
+        const query = "PRAGMA foreign_keys = ON"
 
-        FilmesDatabase.run(query, (e) => {
+        Database.run(query, (e)=>{
             if(e){
-                console.log(e.message)
+                console.log(e.message);
             } else {
-                console.log("Chaves estrangeiras ativas")
+                console.log("Chaves estrangeiras estão ativas")
             }
         })
     }
 
     static createTable(query){
-        return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, (e) => {
+
+        return new Promise((resolve, reject)=>{
+            Database.run(query, (e)=>{
                 if(e){
                     reject(e.message)
-                }else{
-                    resolve("Tabela Criada com Sucesso")
+                } else {
+                    resolve("Tabela criada com sucesso!")
                 }
             })
         })
     }
 
-    static inserirFilme(entidade, query){
+    static inserir(entidade, query){
         const body = Object.values(entidade)
 
         return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, [...body], (e) =>{
+            Database.run(query, [...body], (e) =>{
                 if(e){
                     reject(e.message)
                 }else{
-                    resolve({error: false, message: "Filme cadastrado com sucesso!"})
+                    resolve({error: false, message: "Cadastrado com sucesso!"})
         }})
      })
     }
 
-    static listarTodosFilmes(query){
+    static listarTodos(query){
     return new Promise((resolve, reject) => {
-        FilmesDatabase.all(query, (e, resultado) => {
+        Database.all(query, (e, resultado) => {
             if(e){
                 reject(e.message)
             }else{
@@ -50,9 +51,9 @@ class DAO{
     })
 }
 
-    static listarFilmesPorId(id, query){
+    static listarPorId(id, query){
     return new Promise((resolve, reject) =>{
-        FilmesDatabase.get(query, id, (e, resultado) =>{
+        Database.get(query, id, (e, resultado) =>{
             if(e){
                 reject(e.message)
             }else{
@@ -64,7 +65,7 @@ class DAO{
     static atualizarPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query,[...body, id], (e, result) => {
+            Database.run(query,[...body, id], (e, result) => {
                 if(e){
                     reject(e.message)
                 }else{
@@ -73,18 +74,17 @@ class DAO{
             })
         })
     }
-    static deletaFilmePorId(query, id){
+    static deletaPorId(query, id){
         return new Promise((resolve, reject) => {
             FilmesDatabase.run(query, id, (e) => {
                 if(e){
                     reject(e.message)
                 }else{
-                    resolve({erro: false, message: `Registro com id ${id} deletado com sucesso`})
+                    resolve({erro: false, message: `Registro por Id ${id} deletado com sucesso`})
                 }
             })
         })
     }
-
 }
 
 export default DAO
