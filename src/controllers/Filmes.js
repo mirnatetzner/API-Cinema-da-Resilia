@@ -10,8 +10,8 @@ class Filmes{
      * 
      */
     static rotas(app){
-        app.get("/filmes", async (req, res) => {
-            const response = await FilmesMetodos.listarTodosFilmes()
+        app.get("/filmes", (req, res) => {
+            const response = FilmesMetodos.listarFilmes(req)
             res.status(200).json(response)
         })
 
