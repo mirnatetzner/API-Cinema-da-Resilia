@@ -1,4 +1,4 @@
-/* import ValidacoesSala from "../services/ValidacoesSala.js"
+import ValidacoesSala from "../services/ValidacoesSala.js"
 
 test("Validar se o número de cadeiras namoradeiras é um número inteiro", ()=>{
     expect(ValidacoesSala.validaCadeirasNamoradeiras(1.45)).toBe(false)
@@ -33,4 +33,4 @@ test("Validar se a categoria da sala está entre os tipos existentes e disponív
 
 test("Validar se a categoria da sala está entre os tipos existentes e disponíveis", ()=>{
     expect(ValidacoesSala.validaCategoriaDaSala("imax")).toBe(true)
-})  */
+}) 
