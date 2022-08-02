@@ -66,3 +66,17 @@ try {
 } catch (e) {
     console.log("erro >>>>>>", e)
 }
+
+const ingresso = {
+    filme: 'Nome do filme', 
+    sala: 1, 
+    cadeira: 250, 
+    dataHora: '12/06/2022 20:00', 
+    precoIngresso: 40.00
+}
+
+try {
+
+} catch (e) {
+    
+}
