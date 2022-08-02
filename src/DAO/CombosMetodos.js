@@ -33,6 +33,10 @@ class CombosMetodos extends DAO {
         return response
     }
 
+    static async inserirCombo(combo){
+        const query = ` INSERT INTO combos`
+    }
+
     
     static createTableCombos() {
         this.activePragma()
