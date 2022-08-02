@@ -53,6 +53,15 @@ class Combos extends DAO{
         // app.put("/combos", (req, res) => {
         //     const
         // })
+
+        app.delete("/combos/:id", (req, res) => {
+            if(ValidacoesCombos.validaCombos(req.params.id, Database.Combos)){
+                const usuario = DAO.deletaPorId(req.params.id)
+                res.status(200).json(usuario)
+            } else {
+                res.status(404).json({Error: "Combo não encontrado"})
+            }
+        })
     }
 
 }
