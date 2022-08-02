@@ -17,7 +17,7 @@ export default class ValidacoesIngresso {
     }   
 
     static validaPrecoIngresso(precoIngresso) {
-        precoIngresso === Boolean ? precoIngresso : Error
+        return parseFloat(precoIngresso)
     }
 
     static validaCodigoDeBarra(codigoDeBarra) {
