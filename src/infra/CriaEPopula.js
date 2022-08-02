@@ -1,7 +1,7 @@
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import DAO from "../DAO/DAO.js";
 
-const sala = {
+let sala = {
     cadeiras_comuns: 250,
     cadeiras_namoradeiras: 6,
     espaços_cadeirantes: 4,
