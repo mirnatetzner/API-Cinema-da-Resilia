@@ -31,8 +31,8 @@ class FilmesMetodos extends DAO{
 
 
     static async listarFilmePorId(id){
-        const query = `SELECT * FROM filmes WHERE id= ?`
-        const response = await this.listarFilmePorId(id, query)
+        const query = ` SELECT * FROM filmes WHERE id = ?`
+        const response = await this.listarPorId(id, query)
         return response
     }
     

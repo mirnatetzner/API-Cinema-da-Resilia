@@ -52,16 +52,16 @@ class DAO{
     }
 
     static listarPorId(id, query){
-    return new Promise((resolve, reject) =>{
-        Database.get(query, id, (e, resultado) =>{
-            if(e){
-                reject(e.message)
-            }else{
-                resolve(resultado)
-            }
+        return new Promise((resolve, reject)=> {
+            Database.get(query, id, (e, resultado)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve(resultado)
+                }
+            })
         })
-    })
-}
+    }
     static atualizarPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
