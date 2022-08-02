@@ -1,30 +1,30 @@
 // import IngressoModel from '../models/IngressoModel'
-import ValidacoesIngresso from "../services/ValidacoesIngresso"
-import DatabaseMetodos from "../DAO/IngressoDAO"
+import ValidacoesIngresso from "../services/ValidacoesIngresso.js"
+import DatabaseMetodos from "../DAO/IngressoDAO.js"
 
 class Ingresso {
     static rotas(app) {
-        app.get('/ingresso/:id', (req, res) => {
+        app.get('/ingresso/:id', async (req, res) => {
             try {
-                const ingresso = DatabaseMetodos.obterIngressoPeloID(req.params.id)
+                const ingresso = await DatabaseMetodos.obterIngressoPeloID(req.params.id)
                 res.status(200).json(ingresso)
             } catch(erro) {
                 res.status(500).json(erro.message)
             } 
         })
             
-        app.post('/ingresso/id', (req, res) => {
-            create = async (ingresso, res) => {
-                try {
-                    const result = await IngressoDAO.criarIngresso(ingresso)
-                    res.status(201).json({ msg: result })
-                } catch (error) {
-                    res.status(500).json({ erro: error })
-                }
+        app.post('/ingresso/id', async (req, res) => {
+            const ingresso = req.body
+            try {
+            const result = await IngressoDAO.criarIngresso(ingresso)
+                res.status(201).json({ msg: result })
+            } catch (error) {
+                res.status(500).json({ erro: error })
             }
+
         })
 
-        app.patch('/ingresso/id', (req, res) => {
+        app.patch('/ingresso/id', async (req, res) => {
             const id = req.params.id
             const ingresso = req.body
 
