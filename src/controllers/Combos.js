@@ -6,8 +6,8 @@ import Database from "../infra/Database.js"
 
 class Combos extends DAO{
     static combos(app){
-        app.get("/combos", (req, res) => {
-            const response = CombosMetodos.listarCombos(req)
+        app.get("/combos", async(req, res) => {
+            const response =  await CombosMetodos.listarCombos(req)
             res.status(200).json(response)
         })
 
@@ -36,23 +36,25 @@ class Combos extends DAO{
         })
 
         app.post("/combos", async (req, res) => {
-            // const validCombo = ValidacoesCombos.validaCombos(...Object.values(req.body))
+            const validCombo = ValidacoesCombos.validaCombos(...Object.values(req.body))
 
             try{
-                const combos = new CombosModels(...Object.values(req.body))
-                const response = await CombosMetodos.inserirCombos(combos)
-                
-                res.status(201).json(response)
-                throw new Error ("Não foi possível adicionar novo combo")
+                if(validCombo){
+                    const combos = new CombosModels(...Object.values(req.body))
+                    const response = await CombosMetodos.inserirCombos(combos)
+                    res.status(201).json(response)
+                } else {
+                    throw new Error ("Não foi possível adicionar novo combo") 
+                }
             } catch (e) {
                 res.status(400)
             }
         })
 
         app.put("/combos/:id", (req, res)=> {
-            const isValid = ValidacoesCombos.validCombo(...Object.values(req.body))
+            const validCombo = ValidacoesCombos.validaCombo(...Object.values(req.body))
 
-            if(isValid){
+            if(validCombo){
                 const combo = new CombosModels(...Object.values(req.body))
                 const response = DAO.atualizarPorId(req.params.id, combo)
                 res.status(201).json(response)
