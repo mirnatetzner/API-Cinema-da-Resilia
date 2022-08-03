@@ -40,28 +40,29 @@ class DAO{
     }
 
     static listarTodos(query){
-    return new Promise((resolve, reject) => {
-        Database.all(query, (e, resultado) => {
-            if(e){
-                reject(e.message)
-            }else{
-                resolve(resultado)
-            }
+        return new Promise((resolve, reject)=> {
+            Database.all(query, (e, resultado)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve(resultado)
+                }
+            })
         })
-    })
-}
+    }
 
     static listarPorId(id, query){
-    return new Promise((resolve, reject) =>{
-        Database.get(query, id, (e, resultado) =>{
-            if(e){
-                reject(e.message)
-            }else{
-                resolve(resultado)
-            }
+        return new Promise((resolve, reject)=> {
+            Database.get(query, id, (e, resultado)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve(resultado)
+                }
+            })
         })
-    })
-}
+    }
+    
     static atualizaPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
@@ -74,14 +75,14 @@ class DAO{
             })
         })
     }
-
+    
     static deletaPorId(query, id){
         return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, id, (e) => {
+            Database.run(query, id, (e)=>{
                 if(e){
                     reject(e.message)
-                }else{
-                    resolve({erro: false, message: `Registro por Id ${id} deletado com sucesso`})
+                } else {
+                    resolve({erro: false, message: `Registro com Id ${id} deletado com sucesso`})
                 }
             })
         })

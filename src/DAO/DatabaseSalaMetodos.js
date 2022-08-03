@@ -15,7 +15,7 @@ class DatabaseSalaMetodos extends DAO{
             )
             `
         const response = await this.createTable(query)
-        return response
+        return response;
     }
 
     static async inserirSala(Sala){
@@ -39,6 +39,12 @@ class DatabaseSalaMetodos extends DAO{
     static async atualizaSalaPorId(id, sala){
         const query = `UPDATE Sala SET (cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) = (?,?,?,?,?) WHERE id = ?`
         const response = await this.atualizaPorId(sala, id, query)
+        return response;
+    }
+
+    static async deletaSalaPorId(id){
+        const query = `DELETE * FROM Sala WHERE id = ?`
+        const response = await this.deletaPorId(query, id)
         return response;
     }
 
