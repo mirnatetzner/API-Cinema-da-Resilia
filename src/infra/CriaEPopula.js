@@ -13,7 +13,7 @@ const filme ={
 }
 
 try{
-    await DAO.activePragma()
+    await DAO.ativaChavesEstrangeiras()
 
     const filmes = await FilmesMetodos.createTableFilmes()
     console.log(filmes, ">>>>>> Filmes")
