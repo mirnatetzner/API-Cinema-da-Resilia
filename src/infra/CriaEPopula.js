@@ -1,7 +1,7 @@
 import FilmesMetodos from "../DAO/FilmesMetodos.js";
 import CombosMetodos from "../DAO/CombosMetodos.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
-imoi
+import IngressoMetodos from "../DAO/IngressoMetodos.js"
 import DAO from "../DAO/DAO.js";
 
 const filme ={
@@ -14,7 +14,7 @@ const filme ={
 }
 
 try{
-    await DAO.activePragma()
+    await DAO.ativaChavesEstrangeiras()
 
     const filmes = await FilmesMetodos.createTableFilmes()
     console.log(filmes, ">>>>>> Filmes")
@@ -76,7 +76,13 @@ const ingresso = {
 }
 
 try {
+    await DAO.ativaChavesEstrangeiras()
 
+    const criaIngresso = await IngressoMetodos.createTable()
+    console.log(criaIngresso)
+
+    const AdicionaNovoIngresso = await IngressoMetodos.inserir(ingresso)
+    console.log(AdicionaNovoIngresso)
 } catch (e) {
-    
+    console.log(e.messsage)
 }
