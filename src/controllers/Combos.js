@@ -36,16 +36,14 @@ class Combos extends DAO{
         })
 
         app.post("/combos", async (req, res) => {
-            const validCombo = ValidacoesCombos.validaCombos(...Object.values(req, body))
+            // const validCombo = ValidacoesCombos.validaCombos(...Object.values(req.body))
 
             try{
-                if(validCombo){
-                    const combos = new CombosModels(...Object.values(req, body))
-                    const response = await CombosMetodos.adicaoNovosCombos(combos)
-                    res.status(201).json(response)
-                } else {
-                    throw new Error ("Não foi possível adicionar novo combo")
-                }
+                const combos = new CombosModels(...Object.values(req.body))
+                const response = await CombosMetodos.inserirCombos(combos)
+                
+                res.status(201).json(response)
+                throw new Error ("Não foi possível adicionar novo combo")
             } catch (e) {
                 res.status(400)
             }

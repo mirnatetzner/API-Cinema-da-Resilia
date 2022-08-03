@@ -33,10 +33,6 @@ class CombosMetodos extends DAO {
         return response
     }
 
-    static async inserirCombo(combo){
-        const query = ` INSERT INTO combos`
-    }
-
     
     static createTableCombos() {
         this.activePragma()
@@ -62,22 +58,23 @@ class CombosMetodos extends DAO {
         })
     }
     
-    static adicaoNovosCombos(combos) {
+    static async inserirCombos(combos) {
         const query = `
             INSERT INTO combos (name, price, item1, item2, item3)
             VALUES (?, ?, ?, ?, ?)`
 
-        const body = Object.values(combos)
+        const response = await this.inserir(combos, query)
 
-        return new Promise((resolve, reject) => {
-            Database.run(query, [...body], (e) => {
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve({error: false, message: "Combo adicionado ao cardápio com sucesso!"})
-                }
-            })
-        })
+        return response
+        // return new Promise((resolve, reject) => {
+        //     Database.run(query, [...response], (e) => {
+        //         if(e){
+        //             reject(e.message)
+        //         } else {
+        //             resolve({error: false, message: "Combo adicionado ao cardápio com sucesso!"})
+        //         }
+        //     })
+        // })
     }
 }
 
