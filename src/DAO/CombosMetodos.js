@@ -14,12 +14,10 @@ class CombosMetodos extends DAO {
         })
     }
 
-    /**
-     * listagem de combos por id e name
-     */
-    static async listarCombos(combos){
+
+    static async listarCombos(){
         const query = ` SELECT * FROM combos`
-        const response = await this.listAll(query)
+        const response = await this.listarTodos(query)
         return response
     }     
     static async listarCombosId(id){
