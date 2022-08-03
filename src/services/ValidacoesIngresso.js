@@ -1,4 +1,5 @@
-export default class ValidacoesIngresso {
+import ValidacoesService from "./ValidacoesService.js";
+class ValidacoesIngresso extends ValidacoesService {
     static validaFilme(filme) {
         return filme >= 2
     }
@@ -8,7 +9,8 @@ export default class ValidacoesIngresso {
     }
 
     static validaAssento(assento) {
-
+        let valido = this.validaNumerosInteiros(assento);
+        return valido;
     }
 
     static validaDataHora(dataHora) {
@@ -20,7 +22,13 @@ export default class ValidacoesIngresso {
         precoIngresso === Boolean ? precoIngresso : Error
     }
 
-    static validaCodigoDeBarra(codigoDeBarra) {
-        return codigoDeBarra.length = 12
+    static validaCodigoDeBarra(codigoDeBarra){
+        let valido = this.validaNumerosInteiros(codigoDeBarra)
+        if(valido){
+            return codigoDeBarra.length = 12;
+        }
+        return false;
     }
+
 }
+export default ValidacoesIngresso

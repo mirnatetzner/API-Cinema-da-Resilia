@@ -62,18 +62,19 @@ class DAO{
         })
     })
 }
-    static atualizarPorId(entidade, id, query){
+    static atualizaPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e, result) => {
+            Database.run(query,[...body, id], (e) => {
                 if(e){
                     reject(e.message)
                 }else{
-                    resolve(result)
+                    resolve({Error: false, message: `Entidade de ${id} atualizado(a) com sucesso!`})
                 }
             })
         })
     }
+
     static deletaPorId(query, id){
         return new Promise((resolve, reject) => {
             FilmesDatabase.run(query, id, (e) => {
