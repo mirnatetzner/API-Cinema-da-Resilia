@@ -49,7 +49,7 @@ class DAO{
             }
         })
     })
-}
+    }
 
     static listarPorId(id, query){
     return new Promise((resolve, reject) =>{
@@ -61,7 +61,7 @@ class DAO{
             }
         })
     })
-}
+    }
     static atualizarPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
@@ -76,7 +76,7 @@ class DAO{
     }
     static deletaPorId(query, id){
         return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, id, (e) => {
+            Database.run(query, id, (e) => {
                 if(e){
                     reject(e.message)
                 }else{
