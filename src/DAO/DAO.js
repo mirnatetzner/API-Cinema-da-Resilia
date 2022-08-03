@@ -68,19 +68,44 @@ class DAO{
             Database.run(query,[...body, id], (e, result) => {
                 if(e){
                     reject(e.message)
-                }else{
+                } else {
+                    resolve(resultado)
+                }
+            })
+        })
+    }
+
+    static listarPorId(id, query){
+        return new Promise((resolve, reject)=> {
+            Database.get(query, id, (e, resultado)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve(resultado)
+                }
+            })
+        })
+    }
+    static atualizaPorId(entidade, id, query){
+        const body = Object.values(entidade)
+        return new Promise((resolve, reject)=>{
+            Database.run(query,[...body, id], (e, result)=>{
+                if(e){
+                    reject(e.message)
+                } else {
                     resolve(result)
                 }
             })
         })
     }
+    
     static deletaPorId(query, id){
         return new Promise((resolve, reject) => {
             Database.run(query, id, (e) => {
                 if(e){
                     reject(e.message)
-                }else{
-                    resolve({erro: false, message: `Registro por Id ${id} deletado com sucesso`})
+                } else {
+                    resolve({erro: false, message: `Registro com Id ${id} deletado com sucesso`})
                 }
             })
         })

@@ -35,10 +35,10 @@ const combos = {
     item3: "Mentos"
 }
     try {
-        const criaCombos = await CombosMetodos.createTableCombos()
+        const criaCombos = await CombosMetodos.createTable()
         console.log(criaCombos)
 
-        const addNovoCombo = await CombosMetodos.adicaoNovosCombos(combos)
+        const addNovoCombo = await CombosMetodos.inserir(combos)
         console.log(addNovoCombo)
 
     } catch(e) {
