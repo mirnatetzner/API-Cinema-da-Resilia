@@ -60,9 +60,8 @@ class ValidacoesSala extends ValidacoesService {
         this.validaCategoriaDaSala(tipo);
     }
 
-    static validaIndex(index){
-        let id = Database.Sala.Id
-        if (index == id){
+    static validaIndex(index, id){
+        if (index === id){
             return true
         }
         else{

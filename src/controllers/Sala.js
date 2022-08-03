@@ -34,9 +34,7 @@ class Salas{
                     const response = await DatabaseSalaMetodos.inserirSala(Sala)
                     res.status(201).json(response)
                 } else {
-                    throw new Error (`${isValid}`)
-                    //("Requisição incompleta, revise o corpo da mesma");
-                    
+                    throw new Error ({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})   
                 }
             } catch (error) {
                 res.status(400).json(error.message)
@@ -56,8 +54,8 @@ class Salas{
 
         app.delete("/sala/:index", async(req, res) => {
               if(ValidacoesSala.validaIndex(req.params.index, Database.Sala)){
-                const usuario = await DatabaseSalaMetodos.deletaSalaPorId(req.params.index)
-                res.status(200).json(usuario)
+                const sala = await DatabaseSalaMetodos.deletaSalaPorId(req.params.index)
+                res.status(200).json(sala)
             } else {
                 res.status(404).json({Error: "Sala não encontrada"})
             }
