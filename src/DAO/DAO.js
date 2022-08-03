@@ -74,8 +74,7 @@ class DAO{
             })
         })
     }
-    
-    static deletaPorId(query, id){
+    static deletarPorId(query, id){
         return new Promise((resolve, reject) => {
             Database.run(query, id, (e)=>{
                 if(e){
