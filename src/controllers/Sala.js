@@ -45,19 +45,18 @@ class Salas{
 
         app.put("/sala/:id", async (req, res)=> {
             const isValid = ValidacoesSala.isValid(...Object.values(req.body))
-                console.log(isValid);
             if(isValid){
                 const sala = new SalaModel(...Object.values(req.body))
-                const response = await DatabaseSalaMetodos.atualizaPorId(req.params.id, sala)
+                const response = await DatabaseSalaMetodos.atualizaSalaPorId(req.params.id, sala)
                 res.status(200).json(response)
             } else {
-                res.status(400).json(response +{Erro:"Erro"})
+                res.status(400).json({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
             }
         })
 
         app.delete("/sala/:index", async(req, res) => {
-            if(ValidacoesSala.validaIndex(req.params.index, Database.Sala)){
-                const usuario = await DatabaseSalaMetodos.deletaUsuarioPorId(req.params.index)
+         //   if(ValidacoesSala.validaIndex(req.params.index, Database.Sala)){
+                const usuario = await DatabaseSalaMetodos.deletaSalaPorId(req.params.index)
                 res.status(200).json(usuario)
             } else {
                 res.status(404).json({Error: "Sala não encontrada"})
