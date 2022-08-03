@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 import ValidacoesService from "./ValidacoesService.js";
 export default class ValidacoesIngresso {
 
-=======
-export default class ValidacoesIngresso {
->>>>>>> develop
     static validaFilme(filme) {
         return filme >= 2
     }
 
     static validaSala(sala) {
-<<<<<<< HEAD
         sala >= 1&& sala <= 10
     }
 
@@ -23,13 +18,6 @@ export default class ValidacoesIngresso {
             }
         }
         return false;
-=======
-        sala >= 1 && sala <= 10
-    }
-
-    static validaAssento(assento) {
-
->>>>>>> develop
     }
 
     static validaDataHora(dataHora) {
@@ -38,11 +26,7 @@ export default class ValidacoesIngresso {
     }   
 
     static validaPrecoIngresso(precoIngresso) {
-<<<<<<< HEAD
         return parseFloat(precoIngresso)
-=======
-        precoIngresso === Boolean ? precoIngresso : Error
->>>>>>> develop
     }
 
     static validaCodigoDeBarra(codigoDeBarra) {

@@ -78,11 +78,11 @@ const ingresso = {
 try {
     await DAO.ativaChavesEstrangeiras()
 
-    const criaIngresso = await IngressoMetodos.createTable()
-    console.log(criaIngresso)
+    const criaIngresso = await IngressoMetodos.createTableIngresso()
+    console.log(criaIngresso, ">>>>>> Ingresso")
 
-    const AdicionaNovoIngresso = await IngressoMetodos.inserir(ingresso)
-    console.log(AdicionaNovoIngresso)
+    const AdicionaNovoIngresso = await IngressoMetodos.inserirIngresso(ingresso)
+    console.log(AdicionaNovoIngresso, ">>>>>> Ingresso")
 } catch (e) {
-    console.log(e.messsage)
+    console.log("erro >>>>>>", e)
 }
