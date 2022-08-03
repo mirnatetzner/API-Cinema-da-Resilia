@@ -62,25 +62,26 @@ class DAO{
             })
         })
     }
-    static atualizarPorId(entidade, id, query){
+    static atualizaPorId(entidade, id, query){
         const body = Object.values(entidade)
-        return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e, result) => {
+        return new Promise((resolve, reject)=>{
+            Database.run(query,[...body, id], (e, result)=>{
                 if(e){
                     reject(e.message)
-                }else{
+                } else {
                     resolve(result)
                 }
             })
         })
     }
+    
     static deletaPorId(query, id){
         return new Promise((resolve, reject) => {
-            FilmesDatabase.run(query, id, (e) => {
+            Database.run(query, id, (e)=>{
                 if(e){
                     reject(e.message)
-                }else{
-                    resolve({erro: false, message: `Registro por Id ${id} deletado com sucesso`})
+                } else {
+                    resolve({erro: false, message: `Registro com Id ${id} deletado com sucesso`})
                 }
             })
         })
