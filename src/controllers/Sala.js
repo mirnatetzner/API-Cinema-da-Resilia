@@ -55,7 +55,7 @@ class Salas{
         })
 
         app.delete("/sala/:index", async(req, res) => {
-         //   if(ValidacoesSala.validaIndex(req.params.index, Database.Sala)){
+              if(ValidacoesSala.validaIndex(req.params.index, Database.Sala)){
                 const usuario = await DatabaseSalaMetodos.deletaSalaPorId(req.params.index)
                 res.status(200).json(usuario)
             } else {
