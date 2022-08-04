@@ -2,13 +2,15 @@ export default class ValidacoesCombos {
     /**
      * 
      * @param {String} name 
-     * @returns Object
+     * @returns boolean
      */
     static validaName(name){                                   
-        const nomeCombo = name.toUpperCase()
-        if (nomeCombo.length >= 4 && nomeCombo.length <= 12){
-            return nomeCombo
+        if (name.length >= 4 && name.length <= 12){
+            return true
         } 
+        else{
+            return false
+        }
     }
 
     /**
@@ -16,7 +18,7 @@ export default class ValidacoesCombos {
      * @param {String} item1 
      * @param {String} item2 
      * @param {String} item3 
-     * @returns Object
+     * @returns boolean
      */
     static validaItens(...itens){
         const itensOriginais = [...itens]
@@ -24,9 +26,17 @@ export default class ValidacoesCombos {
         return itensOriginais.length == itensFilter.length
     }
 
+    /**
+     * 
+     * @param {float} price 
+     * @returns boolean
+     */
     static validaPreco(price) {
-        if (price.length <=60.00 || price.length >=15.00) {
-            return price
+        if (price <=60 && price >= 15) {
+            return true;
+        }
+        else{
+            return false
         }
     }
 
@@ -34,7 +44,7 @@ export default class ValidacoesCombos {
      * @param {String} item1
      * @param {String} item2
      * @param {String} item3
-     * @returns Object
+     * @returns boolean
      */
     static validaCombos(name, price, item1, item2, item3){
         return this.validaName(name)

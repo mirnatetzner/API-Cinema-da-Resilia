@@ -4,7 +4,7 @@ class DAO{
     static async ativaChavesEstrangeiras(){
         const query = "PRAGMA foreign_keys = ON"
 
-        Database.run(query, (e)=>{
+        Database.run(query, e =>{
             if(e){
                 console.log(e.message);
             } else {
@@ -14,7 +14,6 @@ class DAO{
     }
 
     static createTable(query){
-
         return new Promise((resolve, reject)=>{
             Database.run(query, (e)=>{
                 if(e){
@@ -85,19 +84,20 @@ class DAO{
             })
         })
     }
-    static atualizaPorId(entidade, id, query) {
-        const body = Object.values(entidade)
 
+    static atualizaPorId(entidade, id, query){
+        const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
-            Database.run(query, [...body, id], (error) => {
-                if (error) {
-                    reject(error.message)
-                } else {
-                    resolve({ Mensagem: "Dados atualizados." })
+            Database.run(query,[...body, id], (e) => {
+                if(e){
+                    reject(e.message)
+                }else{
+                    resolve({Error: false, message: `Entidade de id: ${id} atualizado(a) com sucesso!`})
                 }
             })
         })
     }
+
     static deletarPorId(query, id){
         return new Promise((resolve, reject) => {
             Database.run(query, id, (e) => {

@@ -4,7 +4,7 @@ import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import Database from "../infra/Database.js";
 import { response } from "express";
 
-DatabaseSalaMetodos.createTableSala()
+//DatabaseSalaMetodos.createTableSala()
 class Salas{
     static rotas(app){
         app.get("/sala", async (req,res)=>{
@@ -29,15 +29,15 @@ class Salas{
             const isValid = ValidacoesSala.isValid(...Object.values(req.body))
 
             try {              
-                if(isValid){
+                if(!isValid){
+                    throw new Error ({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})   
+                } else {
                     const Sala = new SalaModel(...Object.values(req.body))
                     const response = await DatabaseSalaMetodos.inserirSala(Sala)
                     res.status(201).json(response)
-                } else {
-                    throw new Error ({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})   
                 }
             } catch (error) {
-                res.status(400).json(error.message)
+                res.status(400).json({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
             }
         })
 
@@ -48,7 +48,7 @@ class Salas{
                 const response = await DatabaseSalaMetodos.atualizaSalaPorId(req.params.id, sala)
                 res.status(200).json(response)
             } else {
-                res.status(400).json({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
+                res.status(400).json({Erro:"Sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
             }
         })
 
