@@ -2,6 +2,7 @@ import SalaModel from "../models/SalaModels.js";
 import ValidacoesSala from "../services/ValidacoesSala.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import Database from "../infra/Database.js";
+import { response } from "express";
 
 DatabaseSalaMetodos.createTableSala()
 class Salas{
@@ -33,43 +34,40 @@ class Salas{
                     const response = await DatabaseSalaMetodos.inserirSala(Sala)
                     res.status(201).json(response)
                 } else {
-                    throw new Error (`${isValid}`)
-                    //("Requisição incompleta, revise o corpo da mesma");
-                    
+                    throw new Error ({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})   
                 }
             } catch (error) {
                 res.status(400).json(error.message)
             }
         })
 
-        app.put("/sala/:id", (req, res)=> {
-            const isValid = ValidacoesService.isValid(...Object.values(req.body))
-
+        app.put("/sala/:id", async (req, res)=> {
+            const isValid = ValidacoesSala.isValid(...Object.values(req.body))
             if(isValid){
                 const sala = new SalaModel(...Object.values(req.body))
-                const response = DatabaseSalaMetodos.atualizarPorId(req.params.id, sala)
-                res.status(201).json(response)
+                const response = await DatabaseSalaMetodos.atualizaSalaPorId(req.params.id, sala)
+                res.status(200).json(response)
             } else {
-                res.status(400).json({Erro:"Erro"})
+                res.status(400).json({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
             }
         })
-        
 
-        app.patch("/sala/:id", (req, res)=>{
-            const response = DatabaseSalaMetodos.atualizaPropriedadesPorId(req.params.id, req.body)
-            res.status(200).json(response)
-        })
-
-        app.delete("/sala/:index", (req, res) => {
-            if(ValidacoesService.validaIndex(req.params.index, Database.Sala)){
-                const usuario = DatabaseSalaMetodos.deletaUsuarioPorId(req.params.index)
-                res.status(200).json(usuario)
-            } else {
-                res.status(404).json({Error: "Sala não encontrada"})
+        app.delete("/sala/:id", async (req, res) => {
+            try {                
+                const salas = await DatabaseSalaMetodos.deletaSalaPorId(req.params.id)
+                if(!salas){
+                    throw new Error("Sala não encontrada")
+                }
+                res.status(200).json(salas)
+                 } catch (error) {    
+                res.status(404).json({Error: error.message})
             }
+                        
         })
+
     }
-}
+    }
+
 
 
 export default Salas;

@@ -6,8 +6,8 @@ import Database from "../infra/Database.js"
 
 class Combos extends DAO{
     static combos(app){
-        app.get("/combos", (req, res) => {
-            const response = CombosMetodos.listarCombos(req)
+        app.get("/combos", async(req, res) => {
+            const response =  await CombosMetodos.listarCombos(req)
             res.status(200).json(response)
         })
 
