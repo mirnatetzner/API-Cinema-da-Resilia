@@ -1,21 +1,21 @@
 import SalaModel from "../models/SalaModels.js";
 import ValidacoesSala from "../services/ValidacoesSala.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
-import Database from "../infra/Database.js";
-import { response } from "express";
+import {
+    response
+} from "express";
 
-//DatabaseSalaMetodos.createTableSala()
-class Salas{
-    static rotas(app){
-        app.get("/sala", async (req,res)=>{
+class Salas {
+    static rotas(app) {
+        app.get("/sala", async (req, res) => {
             const response = await DatabaseSalaMetodos.listarTodasSalas()
             res.status(200).json(response)
         })
 
-        app.get("/sala/:id", async (req, res)=>{
+        app.get("/sala/:id", async (req, res) => {
             try {
                 const Sala = await DatabaseSalaMetodos.listarSalaPorId(req.params.id)
-                if(!Sala){
+                if (!Sala) {
                     throw new Error("Não encontradamos nenhuma sala com esse Id")
                 }
                 res.status(200).json(Sala)
@@ -24,49 +24,59 @@ class Salas{
             }
         })
 
-        app.post("/sala", async (req, res)=>{
-
+        app.post("/sala", async (req, res) => {
             const isValid = ValidacoesSala.isValid(...Object.values(req.body))
-
-            try {              
-                if(!isValid){
-                    throw new Error ({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})   
+            try {
+                if (!isValid) {
+                    throw new Error({
+                        Erro: "Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"
+                    })
                 } else {
                     const Sala = new SalaModel(...Object.values(req.body))
                     const response = await DatabaseSalaMetodos.inserirSala(Sala)
                     res.status(201).json(response)
                 }
             } catch (error) {
-                res.status(400).json({Erro:"Erro, sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
+                res.status(400).json({
+                    Error: error.message
+                })
             }
         })
 
-        app.put("/sala/:id", async (req, res)=> {
+        app.put("/sala/:id", async (req, res) => {
             const isValid = ValidacoesSala.isValid(...Object.values(req.body))
-            if(isValid){
-                const sala = new SalaModel(...Object.values(req.body))
-                const response = await DatabaseSalaMetodos.atualizaSalaPorId(req.params.id, sala)
-                res.status(200).json(response)
-            } else {
-                res.status(400).json({Erro:"Sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala"})
+            try {
+                if (isValid) {
+                    const sala = new SalaModel(...Object.values(req.body))
+                    const response = await DatabaseSalaMetodos.atualizaSalaPorId(req.params.id, sala)
+                    res.status(200).json(response)
+                } else {
+                    res.status(400).json({
+                        Erro: "Sua sala deve ser enviada como objeto JSON com os atirbutos: cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual -TRUE ou FALSE-, categoria_da_sala"
+                    })
+                }
+            } catch (error) {
+                res.status(404).json({
+                    Error: error.message
+                })
             }
         })
 
         app.delete("/sala/:id", async (req, res) => {
-            try {                
+            try {
                 const salas = await DatabaseSalaMetodos.deletaSalaPorId(req.params.id)
-                if(!salas){
+                if (!salas) {
                     throw new Error("Sala não encontrada")
                 }
                 res.status(200).json(salas)
-                 } catch (error) {    
-                res.status(404).json({Error: error.message})
+            } catch (error) {
+                res.status(404).json({
+                    Error: error.message
+                })
             }
-                        
         })
-
     }
-    }
+}
 
 
 

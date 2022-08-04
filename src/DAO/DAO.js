@@ -49,30 +49,7 @@ class DAO{
     })
     }
 
-    static listarPorId(id, query){
-    return new Promise((resolve, reject) =>{
-        Database.get(query, id, (e, resultado) =>{
-            if(e){
-                reject(e.message)
-            }else{
-                resolve(resultado)
-            }
-        })
-    })
-    }
-    static atualizarPorId(entidade, id, query){
-        const body = Object.values(entidade)
-        return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e, result) => {
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve(resultado)
-                }
-            })
-        })
-    }
-
+    
     static listarPorId(id, query){
         return new Promise((resolve, reject)=> {
             Database.get(query, id, (e, resultado)=>{
@@ -84,14 +61,14 @@ class DAO{
             })
         })
     }
-
-    static atualizaPorId(entidade, id, query){
+    
+    static atualizarPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
             Database.run(query,[...body, id], (e) => {
                 if(e){
                     reject(e.message)
-                }else{
+                } else {
                     resolve({Error: false, message: `Entidade de id: ${id} atualizado(a) com sucesso!`})
                 }
             })

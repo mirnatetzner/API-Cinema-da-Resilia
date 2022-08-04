@@ -10,7 +10,7 @@ class Combos{
             res.status(200).json(response)
         })
 
-        app.get("/combos/id/:id", async (req, res) => {
+        app.get("/combos/:id", async (req, res) => {
             try {
                 const combos = await CombosMetodos.listarCombosId(req.params.id)
                 if(!combos){
@@ -48,10 +48,10 @@ class Combos{
             }
         })
 
-        app.put("/combos/:id", (req, res)=> {
+        app.put("/combos/:id", async (req, res)=> {
             try{
                 const combo = new CombosModels(...Object.values(req.body))
-                const response = CombosMetodos.attCombosPorId(req.params.id, combo)
+                const response = await CombosMetodos.attCombosPorId(req.params.id, combo)
                 res.status(201).json(response)
             } catch (error) {
                 res.status(400).json({Erro:"Erro ao adicionar combo"})
@@ -62,9 +62,10 @@ class Combos{
             try{
                 const comboDel = await CombosMetodos.deletarCombosPorId(req.params.id)
                 if(!comboDel) {
-                    throw new  Error ("Combo não encontrado :/ ")
-                } res.status(200).json(comboDel)
-            } catch (error) {
+                    throw new  Error("Combo não encontrado :/ ")
+                } 
+                res.status(200).json(comboDel)
+            } catch(error) {
                 res.status(404).json({Error: error.message})
             }
             
