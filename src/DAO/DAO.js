@@ -4,7 +4,7 @@ class DAO{
     static async ativaChavesEstrangeiras(){
         const query = "PRAGMA foreign_keys = ON"
 
-        Database.run(query, (e)=>{
+        Database.run(query, e =>{
             if(e){
                 console.log(e.message);
             } else {
@@ -14,7 +14,6 @@ class DAO{
     }
 
     static createTable(query){
-
         return new Promise((resolve, reject)=>{
             Database.run(query, (e)=>{
                 if(e){
@@ -98,7 +97,7 @@ class DAO{
             })
         })
     }
-    
+
     static deletarPorId(query, id){
         return new Promise((resolve, reject) => {
             Database.run(query, id, (e) => {

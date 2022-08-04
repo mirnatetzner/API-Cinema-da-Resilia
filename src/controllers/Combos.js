@@ -1,10 +1,9 @@
 import CombosMetodos from "../DAO/CombosMetodos.js"
-import DAO from "../DAO/DAO.js"
 import CombosModels from "../models/CombosModels.js"
 import ValidacoesCombos from "../services/ValidacoesCombos.js"
-import Database from "../infra/Database.js"
+//import Database from "../infra/Database.js"
 
-class Combos extends DAO{
+class Combos{
     static combos(app){
         app.get("/combos", async(req, res) => {
             const response =  await CombosMetodos.listarCombos(req)
@@ -37,11 +36,15 @@ class Combos extends DAO{
 
         app.post("/combos", async (req, res) => {
             try{
+                const isValid = ValidacoesCombos.validaCombos(...Object.values(req.body))
+                if(!isValid){
+                    throw new Error ("Não foi possível adicionar novo combo") 
+                }
                 const combos = new CombosModels(...Object.values(req.body))
                 const response = await CombosMetodos.inserirCombos(combos)
                 res.status(201).json(response)
             } catch (error) {
-                throw new Error ("Não foi possível adicionar novo combo") 
+                res.status(404).json({Error: error.message})
             }
         })
 
@@ -55,7 +58,7 @@ class Combos extends DAO{
             }
         })
 
-        app.delete("/combos/:id", (req, res) => {
+        app.delete("/combos/:id", async(req, res) => {
             try{
                 const comboDel = await CombosMetodos.deletarCombosPorId(req.params.id)
                 if(!comboDel) {

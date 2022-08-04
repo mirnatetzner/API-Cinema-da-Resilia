@@ -12,9 +12,6 @@ const port = process.env.PORT || 3002;
 const app = express()
 
 
-/**
- * verificação de servidor online
- */
 app.listen(port, () => {
     console.log(`servidor online em http://localhost:${port}`)
 })
