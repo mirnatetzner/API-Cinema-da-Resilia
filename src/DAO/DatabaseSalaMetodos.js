@@ -15,26 +15,39 @@ class DatabaseSalaMetodos extends DAO{
             )
             `
         const response = await this.createTable(query)
-        return response
+        return response;
     }
 
     static async inserirSala(Sala){
         const query = `INSERT INTO Sala (cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) VALUES (?,?,?,?,?)`
         const response = await this.inserir(Sala, query)
-        return response
+        return response;
     }
 
     static async listarTodasSalas(){
         const query = ` SELECT * FROM Sala`
         const response = await this.listarTodos(query)
-        return response
+        return response;
     }
 
     static async listarSalaPorId(id){
         const query = ` SELECT * FROM Sala WHERE id = ?`
         const response = await this.listarPorId(id, query)
-        return response
+        return response;
     }
+
+    static async atualizaSalaPorId(id, sala){
+        const query = `UPDATE Sala SET (cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) = (?,?,?,?,?) WHERE id = ?`
+        const response = await this.atualizaPorId(sala, id, query)
+        return response;
+    }
+
+    static async deletaSalaPorId(id){
+        const query = `DELETE FROM Sala WHERE id = ?`
+        const response = await this.deletaPorId(query, id)
+        return response;
+    }
+
 }
 
 export default DatabaseSalaMetodos
