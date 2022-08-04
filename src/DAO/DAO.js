@@ -34,7 +34,7 @@ class DAO{
                 if(e){
                     reject(e.message)
                 }else{
-                    resolve({error: false, message: "Cadastrado com sucesso!"})
+                    resolve({message: "Cadastrado com sucesso!"})
         }})
      })
     }
@@ -86,15 +86,15 @@ class DAO{
             })
         })
     }
-
-    static atualizaPorId(entidade, id, query){
+    static atualizaPorId(entidade, id, query) {
         const body = Object.values(entidade)
+
         return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e) => {
-                if(e){
-                    reject(e.message)
-                }else{
-                    resolve({Error: false, message: `Entidade de id: ${id} atualizado(a) com sucesso!`})
+            Database.run(query, [...body, id], (error) => {
+                if (error) {
+                    reject(error.message)
+                } else {
+                    resolve({ Mensagem: "Dados atualizados." })
                 }
             })
         })
@@ -105,7 +105,7 @@ class DAO{
                 if(e){
                     reject(e.message)
                 } else {
-                    resolve({erro: false, message: `Registro com Id ${id} deletado com sucesso`})
+                    resolve({message: `Registro com Id ${id} deletado com sucesso`})
                 }
             })
         })
