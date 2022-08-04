@@ -1,8 +1,8 @@
 class IngressoModel {
-    constructor(filme, sala, assento, dataHora, precoIngresso){
+    constructor(filme, sala, cadeira, dataHora, precoIngresso){
         this.filme = filme
         this.sala = sala
-        this.assento = assento
+        this.cadeira = cadeira
         this.dataHora = dataHora
         this.precoIngresso = precoIngresso
     }

@@ -20,6 +20,68 @@ https://github.com/mirnatetzner/API-Cinema-da-Resilia.git
    npm i path
    npm i url
 ```
+## Rotas do projeto
+
+```
+url/combos
+url/filmes
+url/ingresso
+url/sala
+
+```
+
+## Exemplos para post
+```
+POST: url/combos
+
+POST: url/filmes
+
+{
+    "nome": "nome do filme",
+		"genero": "Gênero do filme",
+		"duracao": "Duração do filme",
+		"anoLancamento": "Ano de lançamento do filme",
+		"diretor": "Diretor do filme",
+		"sinopse": "Sinopse do filme"
+	}
+
+POST: url/ingresso
+
+POST: url/sala
+
+```
+
+## Exemplos para DELETE
+```
+DELETE: url/combos/id
+
+DELETE: url/filmes/id
+
+DELETE: url/ingresso/id
+
+DELETE: url/sala/id
+
+```
+## Exemplos para PUT
+```
+PUT: url/combos/id
+
+PUT: url/filmes/id
+{
+   "nome": "Teste",
+		"genero": "Teste",
+		"duracao": "Teste",
+		"anoLancamento": "Teste",
+		"diretor": "Teste",
+		"sinopse": "Teste"
+	}
+  
+PUT: url/ingresso/id
+
+PUT: url/sala/id
+
+```
+
 
 ## Rotas e entidades	🔀
 O projeto se constitui em quatro entidades, sendo elas: Filmes, Ingressos, Salas e Combos. Abaixo, alguns exemplos de requisições e respostas:

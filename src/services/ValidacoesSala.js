@@ -1,4 +1,5 @@
 import ValidacoesService from "./ValidacoesService.js";
+import Database from "../infra/Database.js";
 class ValidacoesSala extends ValidacoesService {
 
     /**
@@ -58,6 +59,7 @@ class ValidacoesSala extends ValidacoesService {
         this.validaCertificadoDeVistoriaAnual(certificado) &&
         this.validaCategoriaDaSala(tipo);
     }
+
 }
 
 export default ValidacoesSala

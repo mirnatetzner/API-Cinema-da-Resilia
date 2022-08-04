@@ -1,14 +1,22 @@
-export default class ValidacoesIngresso {
+import ValidacoesService from "./ValidacoesService.js";
+class ValidacoesIngresso extends ValidacoesService {
     static validaFilme(filme) {
         return filme >= 2
     }
 
     static validaSala(sala) {
-        sala >= 1 && sala <= 10
+        sala >= 1&& sala <= 10
     }
 
-    static validaAssento(assento) {
-
+    static validaCadeira(cadeira) {
+        if (typeof cadeira != "boolean" ) {
+            const number = Number(cadeira)
+            let Valid = Number.isInteger(number)
+            if (Valid && number > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     static validaDataHora(dataHora) {
@@ -17,10 +25,16 @@ export default class ValidacoesIngresso {
     }   
 
     static validaPrecoIngresso(precoIngresso) {
-        precoIngresso === Boolean ? precoIngresso : Error
+        return parseFloat(precoIngresso)
     }
 
-    static validaCodigoDeBarra(codigoDeBarra) {
-        return codigoDeBarra.length = 12
+    static validaCodigoDeBarra(codigoDeBarra){
+        let valido = this.validaNumerosInteiros(codigoDeBarra)
+        if(valido){
+            return codigoDeBarra.length = 12;
+        }
+        return false;
     }
+
 }
+export default ValidacoesIngresso
