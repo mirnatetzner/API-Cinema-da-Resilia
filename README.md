@@ -5,14 +5,17 @@
  A ideia era a criação do produto mínimo viável de uma API Rest para web sites de cinemas independentes. 
 API Rest com CRUD das operações no padrão HTTP que faz requisições ao "Cinema da Resilia"
 
-## Como utilizar nossa aplicação:
-- Em seu terminal e na pasta que deseja utilizar a aplicação, dê git clone em nosso projeto:
+## Como utilizar nossa aplicação
+  Em seu terminal e na pasta que deseja utilizar a aplicação, dê git clone em nosso projeto:
+  
 ```
 https://github.com/mirnatetzner/API-Cinema-da-Resilia.git
 ```
-
- ## Instalações necessárias 
- As dependências utilizadas nessa aplicação foram: Express, SQLite3, Dotenv, Path, Url. Para sua instalação, utilizar, separadamente, os comandos abaixo:
+Além disso, para o funcionamento correto da aplicação, é preciso instalar as dependências utilizadas. Estas foram: **Express**, **SQLite3**, **Dotenv**, **Path** e **Url**. Para isso, você pode utilizar o comando simplificado:
+```
+npm i
+```
+Ou caso prefira, você pode instalá-las uma a uma utilizando, separadamente, o comando abaixo:
 ```npm i express
    npm i sqlite3
    npm i sqlite3
@@ -20,8 +23,17 @@ https://github.com/mirnatetzner/API-Cinema-da-Resilia.git
    npm i path
    npm i url
 ```
-## Rotas do projeto
 
+## Rotas e entidades	🔀
+Pensando nas necessidades de  O projeto se constitui em quatro entidades, sendo elas: Filmes, Ingressos, Salas e Combos. Abaixo, alguns exemplos de requisições e respostas
+
+
+
+## Implementação dos verbos do HTTP
+
+### GET 
+
+ Para acessar as rotas do projeto, basta utilizar um dos comandos abaixo referente a entidade que deseja ver.
 ```
 url/combos
 url/filmes
@@ -30,7 +42,7 @@ url/sala
 
 ```
 
-## Exemplos para post
+### POST
 ```
 POST: url/combos
 
@@ -51,7 +63,32 @@ POST: url/sala
 
 ```
 
-## Exemplos para DELETE
+O post poderá ser utilizado para adicionar um novo objeto a entidade desejada. Por exemplo, para o caso de adição de um novo filme:
+
+```
+  {
+    "nome": "De Volta para o Futuro", 
+    "genero": "Ficção científica", 
+    "duracao": "2hrs", 
+    "anoLancamento": 1985, 
+    "diretor": "Robert Zemeckis", 
+    "sinopse": "Viajando no tempo em um carro modificado"
+  }
+    
+```
+
+E a resposta deverá ser:
+
+```
+  {
+    "error": false,
+    "message": "Cadastrado com sucesso!"
+  }
+```
+E isso significa que o novo filme foi cadastrado no banco de dados. 
+
+
+### DELETE
 ```
 DELETE: url/combos/id
 
@@ -62,7 +99,7 @@ DELETE: url/ingresso/id
 DELETE: url/sala/id
 
 ```
-## Exemplos para PUT
+### PUT
 ```
 PUT: url/combos/id
 
@@ -83,35 +120,7 @@ PUT: url/sala/id
 ```
 
 
-## Rotas e entidades	🔀
-O projeto se constitui em quatro entidades, sendo elas: Filmes, Ingressos, Salas e Combos. Abaixo, alguns exemplos de requisições e respostas:
 
-### get: url/filmes/2 
-```
-  ISAAAAC EH PRA TU POR AQ O PRIMEIRO EXEMPLO LA O PRIMEIRO GILME SEI LA
-```
-
-Para o caso de adição de um novo filme:
-### post: url/
-Objeto de requisição:
-```
-  {
-    "nome": "De Volta para o Futuro", 
-    "genero": "Ficção científica", 
-    "duracao": "2hrs", 
-    "anoLancamento": 1985, 
-    "diretor": "Robert Zemeckis", 
-    "sinopse": "Viajando no tempo em um carro modificado"
-  }
-    
-```
-Resposta:
-```
-  {
-    "error": false,
-    "message": "Cadastrado com sucesso!"
-  }
-```
 
 ## Contribuidores 👩‍💻👨‍💻
   <table>
