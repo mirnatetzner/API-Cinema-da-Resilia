@@ -43,7 +43,7 @@ class DatabaseSalaMetodos extends DAO{
     }
 
     static async deletaSalaPorId(id){
-        const query = `DELETE * FROM Sala WHERE id = ?`
+        const query = `DELETE FROM Sala WHERE id = ?`
         const response = await this.deletaPorId(query, id)
         return response;
     }
