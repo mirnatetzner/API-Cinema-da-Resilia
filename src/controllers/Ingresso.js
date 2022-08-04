@@ -36,7 +36,7 @@ class Ingresso {
                 if(isValid) {
                     const ingresso = new IngressoModel(...Object.values(req.body))
                     const response = await IngressoMetodos.inserirIngresso(ingresso)
-                    req.status(201).json(response)
+                    res.status(201).json(response)
                 } else {
                     throw new Error("Não foi possível incluir o ingresso em nosso sistema.")
                 }
