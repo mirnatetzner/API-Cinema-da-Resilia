@@ -1,6 +1,5 @@
 import ValidacoesService from "./ValidacoesService.js";
-export default class ValidacoesIngresso {
-
+class ValidacoesIngresso extends ValidacoesService {
     static validaFilme(filme) {
         return filme >= 2
     }
@@ -29,7 +28,13 @@ export default class ValidacoesIngresso {
         return parseFloat(precoIngresso)
     }
 
-    static validaCodigoDeBarra(codigoDeBarra) {
-        return codigoDeBarra.length = 12
+    static validaCodigoDeBarra(codigoDeBarra){
+        let valido = this.validaNumerosInteiros(codigoDeBarra)
+        if(valido){
+            return codigoDeBarra.length = 12;
+        }
+        return false;
     }
+
 }
+export default ValidacoesIngresso

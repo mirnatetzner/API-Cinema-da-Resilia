@@ -86,14 +86,15 @@ class DAO{
             })
         })
     }
+
     static atualizaPorId(entidade, id, query){
         const body = Object.values(entidade)
-        return new Promise((resolve, reject)=>{
-            Database.run(query,[...body, id], (e, result)=>{
+        return new Promise((resolve, reject) => {
+            Database.run(query,[...body, id], (e) => {
                 if(e){
                     reject(e.message)
-                } else {
-                    resolve(result)
+                }else{
+                    resolve({Error: false, message: `Entidade de id: ${id} atualizado(a) com sucesso!`})
                 }
             })
         })
