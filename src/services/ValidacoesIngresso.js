@@ -1,14 +1,6 @@
-import ValidacoesService from "./ValidacoesService.js";
-<<<<<<< HEAD
-export default class ValidacoesIngresso {
+import ValidacoesService from "./ValidacoesService.js"
 
-    /**
-     * @param {string} filme 
-     * @returns boolean
-     */
-=======
 class ValidacoesIngresso extends ValidacoesService {
->>>>>>> develop
     static validaFilme(filme) {
         return filme.length >= 2
     }
@@ -38,7 +30,6 @@ class ValidacoesIngresso extends ValidacoesService {
         return preco == precoIngresso
     }
 
-<<<<<<< HEAD
      /**
      * 
      * @param {string} filme 
@@ -49,15 +40,10 @@ class ValidacoesIngresso extends ValidacoesService {
      * @returns boolean
      */
       static isValid(filme, sala, cadeira, precoIngresso){
-        return this.validaFilme(filme) && this.validaSala(sala) && this.validaCadeira(cadeira) && this.validaPrecoIngresso(precoIngresso)
-=======
-    static validaCodigoDeBarra(codigoDeBarra){
-        let valido = this.validaNumerosInteiros(codigoDeBarra)
-        if(valido){
-            return codigoDeBarra.length = 12;
-        }
-        return false;
->>>>>>> develop
+        return this.validaFilme(filme) 
+        && this.validaSala(sala) 
+        && this.validaCadeira(cadeira) 
+        && this.validaPrecoIngresso(precoIngresso)
     }
 
 }

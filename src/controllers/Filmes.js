@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import FilmesModels from "../models/FilmesModel.js"
-=======
 import FilmesModels from "../Models/FilmesModel.js"
 import ValidacoesFilmes from "../services/ValidacoesFilmes.js"
->>>>>>> develop
 import FilmesMetodos from "../DAO/FilmesMetodos.js"
 
 
