@@ -38,7 +38,7 @@ class FilmesMetodos extends DAO{
     
     static async deletaFilmePorId(id){
         const query = `DELETE FROM filmes WHERE id = ?`
-        const response = await this.deletaPorId(query, id)
+        const response = await this.deletarPorId(query, id)
         return response
     }
 

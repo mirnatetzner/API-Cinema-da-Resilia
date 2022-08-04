@@ -1,9 +1,7 @@
 import FilmesModels from "../Models/FilmesModel.js"
-import FilmesMetodos from "../DAO/FilmesMetodos.js"
-import FilmesDatabase from "../infra/FilmesDatabase.js"
-import DAO from "../DAO/DAO.js"
 import ValidacoesFilmes from "../services/ValidacoesFilmes.js"
-import { error } from "console" 
+import FilmesMetodos from "../DAO/FilmesMetodos.js"
+
 
 
 class Filmes{
