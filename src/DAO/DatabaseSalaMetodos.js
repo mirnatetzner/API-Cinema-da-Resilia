@@ -47,7 +47,6 @@ class DatabaseSalaMetodos extends DAO{
         const response = await this.deletarPorId(query, id)
         return response;
     }
-
 }
 
 export default DatabaseSalaMetodos

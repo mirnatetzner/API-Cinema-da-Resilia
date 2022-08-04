@@ -34,7 +34,7 @@ class DAO{
                 if(e){
                     reject(e.message)
                 }else{
-                    resolve({error: false, message: "Cadastrado com sucesso!"})
+                    resolve({message: "Cadastrado com sucesso!"})
         }})
      })
     }
@@ -99,13 +99,14 @@ class DAO{
             })
         })
     }
+    
     static deletarPorId(query, id){
         return new Promise((resolve, reject) => {
             Database.run(query, id, (e) => {
                 if(e){
                     reject(e.message)
                 } else {
-                    resolve({erro: false, message: `Registro com Id ${id} deletado com sucesso`})
+                    resolve({message: `Registro com Id ${id} deletado com sucesso`})
                 }
             })
         })
