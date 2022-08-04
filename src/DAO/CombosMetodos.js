@@ -52,7 +52,7 @@ class CombosMetodos extends DAO {
 
     static async deletarCombosPorId(id){
         const query = `
-            DELETE * FROM combos WHERE id = ?`
+            DELETE FROM combos WHERE id = ?`
         const response = await this.deletarPorId(query, id)
         return response;
     }
