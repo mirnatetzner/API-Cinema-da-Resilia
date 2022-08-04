@@ -1,5 +1,4 @@
 import ValidacoesService from "./ValidacoesService.js";
-import Database from "../infra/Database.js";
 class ValidacoesSala extends ValidacoesService {
 
     /**
