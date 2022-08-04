@@ -63,11 +63,11 @@ class Ingresso {
                 if(!ingresso) {
                     throw new Error("Ingresso não encontrado em nosso sistema.")
                 }
+                res.status(200).json(ingresso)
             } catch(error) {
                 res.status(400).json({Error: error.message})
             }
         })  
-
     }
 }
 
