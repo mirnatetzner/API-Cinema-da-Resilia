@@ -1,0 +1,11 @@
+
+### Instruções para fazer post entidade Sala:
+
+```{
+cadeiras_comuns: inteiro
+cadeiras_namoradeiras: inteiro
+espaço_cadeirantes: inteiro
+certificado_de_vistoria_anual: true || false
+categoria_da_sala: "IMAX" || "XD" || "Macro XE" || "XPlus" || "RealD" || "D-Box"
+}
+```

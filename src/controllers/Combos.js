@@ -10,7 +10,7 @@ class Combos{
             res.status(200).json(response)
         })
 
-        app.get("/combos/id/:id", async (req, res) => {
+        app.get("/combos/:id", async (req, res) => {
             try {
                 const combos = await CombosMetodos.listarCombosId(req.params.id)
                 if(!combos){
