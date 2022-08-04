@@ -14,10 +14,7 @@ class CombosMetodos extends DAO {
         })
     }
 
-    /**
-     * listagem de combos por id e name
-     */
-     static async listarCombos(){
+    static async listarCombos(){
         const query = ` SELECT * FROM combos`
         const response = await this.listarTodos(query)
         return response
@@ -39,7 +36,7 @@ class CombosMetodos extends DAO {
         this.activePragma()
 
         const query = `
-        CREATE TABLE IF NOT EXISTS combos(
+            CREATE TABLE IF NOT EXISTS combos(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name VARCHAR,
             price INT,
@@ -49,7 +46,7 @@ class CombosMetodos extends DAO {
         )`
 
         return new Promise((resolve, reject) => {
-            CombosDatabase.run(query, (e) => {
+            Database.run(query, (e) => {
                 if(e) {
                     reject(e.message)
                 } else {
@@ -67,16 +64,24 @@ class CombosMetodos extends DAO {
         const response = await this.inserir(combos, query)
 
         return response
-        // return new Promise((resolve, reject) => {
-        //     Database.run(query, [...response], (e) => {
-        //         if(e){
-        //             reject(e.message)
-        //         } else {
-        //             resolve({error: false, message: "Combo adicionado ao cardápio com sucesso!"})
-        //         }
-        //     })
-        // })
     }
+    
+    static async attCombosPorId(id, sala){
+        const query = `
+            UPDATE combos
+            SET (name, price, item1, item2, item3) = (?,?,?,?,?) 
+            WHERE id = ?`
+        const response = await this.atualizaPorId(sala, id, query)
+        return response;
+    }
+
+    static async deletarCombosPorId(id){
+        const query = `
+            DELETE * FROM combos WHERE id = ?`
+        const response = await this.deletaPorId(query, id)
+        return response;
+    }
+
 }
 
 export default CombosMetodos
