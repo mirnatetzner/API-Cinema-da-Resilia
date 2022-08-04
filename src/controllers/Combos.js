@@ -36,43 +36,38 @@ class Combos extends DAO{
         })
 
         app.post("/combos", async (req, res) => {
-            const validCombo = ValidacoesCombos.validaCombos(...Object.values(req, body))
-
             try{
-                if(validCombo){
-                    const combos = new CombosModels(...Object.values(req, body))
-                    const response = await CombosMetodos.adicaoNovosCombos(combos)
-                    res.status(201).json(response)
-                } else {
-                    throw new Error ("Não foi possível adicionar novo combo")
-                }
-            } catch (e) {
-                res.status(400)
+                const combos = new CombosModels(...Object.values(req.body))
+                const response = await CombosMetodos.inserirCombos(combos)
+                res.status(201).json(response)
+            } catch (error) {
+                throw new Error ("Não foi possível adicionar novo combo") 
             }
         })
 
         app.put("/combos/:id", (req, res)=> {
-            const isValid = ValidacoesCombos.validCombo(...Object.values(req.body))
-
-            if(isValid){
+            try{
                 const combo = new CombosModels(...Object.values(req.body))
-                const response = DAO.atualizarPorId(req.params.id, combo)
+                const response = CombosMetodos.attCombosPorId(req.params.id, combo)
                 res.status(201).json(response)
-            } else {
-                res.status(400).json({Erro:"Erro"})
+            } catch (error) {
+                res.status(400).json({Erro:"Erro ao adicionar combo"})
             }
         })
 
         app.delete("/combos/:id", (req, res) => {
-            if(ValidacoesCombos.validaCombos(req.params.id, Database.Combos)){
-                const usuario = DAO.deletaPorId(req.params.id)
-                res.status(200).json(usuario)
-            } else {
-                res.status(404).json({Error: "Combo não encontrado"})
+            try{
+                const comboDel = await CombosMetodos.deletarCombosPorId(req.params.id)
+                if(!comboDel) {
+                    throw new  Error ("Combo não encontrado :/ ")
+                } res.status(200).json(comboDel)
+            } catch (error) {
+                res.status(404).json({Error: error.message})
             }
+            
         })
+        
     }
-
 }
 
 export default Combos
