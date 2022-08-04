@@ -49,17 +49,14 @@ class Filmes{
         })
 
         app.put("/filmes/:id", async (req, res)=> {
-                try {
+            const isValid = ValidacoesFilmes.isValid(...Object.values(req.body))
+            if(isValid){
                 const filme = new FilmesModels(...Object.values(req.body))
-                const response = await FilmesMetodos.atualizaPorId(req.params.id, filme)
-                res.status(201).json(response)
-                
-            } catch (error) {
-                
-                res.status(400).json({Erro:"Erro"})
-                console.log(error.message)
+                const response = await FilmesMetodos.atualizaFilmePorId(req.params.id, filme)
+                res.status(200).json(response)
+            } else {
+                res.status(400).json({Erro:"Erro, verifique se inseriu as informações corretas de acordo com a documentação."})
             }
-
         })
 
 

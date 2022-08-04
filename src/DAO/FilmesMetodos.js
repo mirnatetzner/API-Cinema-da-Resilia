@@ -42,10 +42,10 @@ class FilmesMetodos extends DAO{
         return response
     }
 
-    static async atualizaPorId(id){
-        const query = `UPDATE filmes SET WHERE id = ?, nome = ?, genero = ?, duracao = ?, anoLancamento = ?, diretor = ?, sinopse = ?`
-        const response = await this.atualizaPorId(query, id)
-        return response
+    static async atualizaFilmePorId(id, filme){
+        const query = `UPDATE filmes SET (nome, genero, duracao, anoLancamento, diretor, sinopse) = (?,?,?,?,?,?) WHERE id = ?`
+        const response = await this.atualizaPorId(filme, id, query)
+        return response;
     }
     
 }
