@@ -1,7 +1,7 @@
 import FilmesModels from "../Models/FilmesModel.js"
 import FilmesMetodos from "../DAO/FilmesMetodos.js"
-import FilmesDatabase from "../infra/FilmesDatabase.js"
-import DAO from "../DAO/DAO.js"
+// import FilmesDatabase from "../infra/FilmesDatabase.js"
+// import DAO from "../DAO/DAO.js"
 
 
 class Filmes{

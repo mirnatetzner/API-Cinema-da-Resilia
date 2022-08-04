@@ -40,8 +40,32 @@ class DAO{
     }
 
     static listarTodos(query){
-        return new Promise((resolve, reject)=> {
-            Database.all(query, (e, resultado)=>{
+    return new Promise((resolve, reject) => {
+        Database.all(query, (e, resultado) => {
+            if(e){
+                reject(e.message)
+            }else{
+                resolve(resultado)
+            }
+        })
+    })
+    }
+
+    static listarPorId(id, query){
+    return new Promise((resolve, reject) =>{
+        Database.get(query, id, (e, resultado) =>{
+            if(e){
+                reject(e.message)
+            }else{
+                resolve(resultado)
+            }
+        })
+    })
+    }
+    static atualizarPorId(entidade, id, query){
+        const body = Object.values(entidade)
+        return new Promise((resolve, reject) => {
+            Database.run(query,[...body, id], (e, result) => {
                 if(e){
                     reject(e.message)
                 } else {
@@ -75,10 +99,9 @@ class DAO{
             })
         })
     }
-    
-    static deletaPorId(query, id){
+    static deletarPorId(query, id){
         return new Promise((resolve, reject) => {
-            Database.run(query, id, (e)=>{
+            Database.run(query, id, (e) => {
                 if(e){
                     reject(e.message)
                 } else {

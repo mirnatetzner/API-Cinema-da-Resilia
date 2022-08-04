@@ -60,14 +60,6 @@ class ValidacoesSala extends ValidacoesService {
         this.validaCategoriaDaSala(tipo);
     }
 
-    static validaIndex(index, id){
-        if (index === id){
-            return true
-        }
-        else{
-            return false
-        }
-    } 
 }
 
 export default ValidacoesSala

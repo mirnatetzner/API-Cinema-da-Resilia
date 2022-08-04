@@ -5,12 +5,18 @@ class ValidacoesIngresso extends ValidacoesService {
     }
 
     static validaSala(sala) {
-        sala >= 1 && sala <= 10
+        sala >= 1&& sala <= 10
     }
 
-    static validaAssento(assento) {
-        let valido = this.validaNumerosInteiros(assento);
-        return valido;
+    static validaCadeira(cadeira) {
+        if (typeof cadeira != "boolean" ) {
+            const number = Number(cadeira)
+            let Valid = Number.isInteger(number)
+            if (Valid && number > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     static validaDataHora(dataHora) {
@@ -19,7 +25,7 @@ class ValidacoesIngresso extends ValidacoesService {
     }   
 
     static validaPrecoIngresso(precoIngresso) {
-        precoIngresso === Boolean ? precoIngresso : Error
+        return parseFloat(precoIngresso)
     }
 
     static validaCodigoDeBarra(codigoDeBarra){
