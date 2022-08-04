@@ -46,7 +46,7 @@ class CombosMetodos extends DAO {
             UPDATE combos
             SET (name, price, item1, item2, item3) = (?,?,?,?,?) 
             WHERE id = ?`
-        const response = await this.atualizaPorId(sala, id, query)
+        const response = await this.atualizarPorId(sala, id, query)
         return response;
     }
 
