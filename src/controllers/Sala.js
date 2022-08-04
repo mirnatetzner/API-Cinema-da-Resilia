@@ -1,12 +1,10 @@
 import SalaModel from "../models/SalaModels.js";
 import ValidacoesSala from "../services/ValidacoesSala.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
-import Database from "../infra/Database.js";
 import {
     response
 } from "express";
 
-//DatabaseSalaMetodos.createTableSala()
 class Salas {
     static rotas(app) {
         app.get("/sala", async (req, res) => {
