@@ -5,7 +5,10 @@ class IngressoMetodos extends DAO {
     static async createTableIngresso(){
         const query = `
         CREATE TABLE IF NOT EXISTS ingresso(
+<<<<<<< HEAD
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
+=======
+>>>>>>> develop
             filme TEXT, 
             sala INTEGER, 
             cadeira INTEGER, 

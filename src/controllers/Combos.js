@@ -2,6 +2,7 @@ import CombosMetodos from "../DAO/CombosMetodos.js"
 import DAO from "../DAO/DAO.js"
 import CombosModels from "../models/CombosModels.js"
 import ValidacoesCombos from "../services/ValidacoesCombos.js"
+import Database from "../infra/Database.js"
 
 class Combos extends DAO{
     static combos(app){
@@ -50,9 +51,26 @@ class Combos extends DAO{
             }
         })
 
-        // app.put("/combos", (req, res) => {
-        //     const
-        // })
+        app.put("/combos/:id", (req, res)=> {
+            const isValid = ValidacoesCombos.validCombo(...Object.values(req.body))
+
+            if(isValid){
+                const combo = new CombosModels(...Object.values(req.body))
+                const response = DAO.atualizarPorId(req.params.id, combo)
+                res.status(201).json(response)
+            } else {
+                res.status(400).json({Erro:"Erro"})
+            }
+        })
+
+        app.delete("/combos/:id", (req, res) => {
+            if(ValidacoesCombos.validaCombos(req.params.id, Database.Combos)){
+                const usuario = DAO.deletaPorId(req.params.id)
+                res.status(200).json(usuario)
+            } else {
+                res.status(404).json({Error: "Combo não encontrado"})
+            }
+        })
     }
 
 }
