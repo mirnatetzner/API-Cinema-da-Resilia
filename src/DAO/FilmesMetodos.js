@@ -47,7 +47,6 @@ class FilmesMetodos extends DAO{
         const response = await this.atualizaPorId(filme, id, query)
         return response;
     }
-    
 }
 
 export default FilmesMetodos

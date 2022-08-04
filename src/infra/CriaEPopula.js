@@ -1,6 +1,7 @@
 import FilmesMetodos from "../DAO/FilmesMetodos.js";
 import CombosMetodos from "../DAO/CombosMetodos.js";
 import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
+import IngressoMetodos from "../DAO/IngressoMetodos.js"
 import DAO from "../DAO/DAO.js";
 
 const filme ={
@@ -35,10 +36,10 @@ const combos = {
     item3: "Mentos"
 }
     try {
-        const criaCombos = await CombosMetodos.createTableCombos()
+        const criaCombos = await CombosMetodos.createTable()
         console.log(criaCombos)
 
-        const addNovoCombo = await CombosMetodos.adicaoNovosCombos(combos)
+        const addNovoCombo = await CombosMetodos.inserir(combos)
         console.log(addNovoCombo)
 
     } catch(e) {
@@ -62,6 +63,26 @@ try {
     const salaCriada = await DatabaseSalaMetodos.inserirSala(sala)
     console.log(salaCriada, ">>>>>> Sala")
 
+} catch (e) {
+    console.log("erro >>>>>>", e)
+}
+
+const ingresso = {
+    filme: 'Nome do filme', 
+    sala: 1, 
+    cadeira: 250, 
+    dataHora: '12/06/2022 20:00', 
+    precoIngresso: 40.00
+}
+
+try {
+    await DAO.ativaChavesEstrangeiras()
+
+    const criaIngresso = await IngressoMetodos.createTableIngresso()
+    console.log(criaIngresso, ">>>>>> Ingresso")
+
+    const AdicionaNovoIngresso = await IngressoMetodos.inserirIngresso(ingresso)
+    console.log(AdicionaNovoIngresso, ">>>>>> Ingresso")
 } catch (e) {
     console.log("erro >>>>>>", e)
 }

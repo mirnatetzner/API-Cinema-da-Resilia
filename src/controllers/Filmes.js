@@ -3,7 +3,7 @@ import FilmesMetodos from "../DAO/FilmesMetodos.js"
 import FilmesDatabase from "../infra/FilmesDatabase.js"
 import DAO from "../DAO/DAO.js"
 import ValidacoesFilmes from "../services/ValidacoesFilmes.js"
-import { error } from "console"
+import { error } from "console" 
 
 
 class Filmes{
