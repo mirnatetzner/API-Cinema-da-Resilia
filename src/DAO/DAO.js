@@ -34,9 +34,8 @@ class DAO{
                 if(e){
                     reject(e.message)
                 }else{
-                    resolve({message: "Cadastrado com sucesso!"})
-        }})
-     })
+                    resolve({error: false, message: "Cadastrado com sucesso!"})
+        }})     })
     }
 
     static listarTodos(query){
