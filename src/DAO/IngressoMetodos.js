@@ -16,7 +16,7 @@ class IngressoMetodos extends DAO {
         const response = await this.createTable(query)
         return response
     }
-
+    
     static async inserirIngresso(ingresso){
         const query = `INSERT INTO ingresso (filme, sala, cadeira, dataHora, precoIngresso) 
                        VALUES (?,?,?,?,?)`

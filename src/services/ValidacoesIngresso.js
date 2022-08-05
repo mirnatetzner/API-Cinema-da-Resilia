@@ -1,6 +1,6 @@
 import ValidacoesService from "./ValidacoesService.js"
 
-class ValidacoesIngresso extends ValidacoesService {
+class ValidacoesIngresso extends ValidacoesService{
     static validaFilme(filme) {
         return filme.length >= 2
     }
@@ -10,7 +10,8 @@ class ValidacoesIngresso extends ValidacoesService {
      * @returns boolean
      */
     static validaSala(sala) {
-        return sala >= 1
+        const salaIsNum = Number(sala)
+        return salaIsNum >= 1
     }
 
     /**
@@ -18,24 +19,22 @@ class ValidacoesIngresso extends ValidacoesService {
      * @returns boolean
      */
     static validaCadeira(cadeira) {
-        return ValidacoesService.validaNumerosInteiros(cadeira);
+        return this.validaNumerosInteiros(cadeira);
     }
-
 
     /**
      * @param {number} precoIngresso 
      * @returns boolean
      */
     static validaPrecoIngresso(precoIngresso) {
+        const preco = Number(precoIngresso)
         return preco == precoIngresso
     }
 
      /**
-     * 
      * @param {string} filme 
      * @param {number} sala 
-     * @param {number} cadeira 
-     * @param {string} dataHora 
+     * @param {number} cadeira
      * @param {number} precoIngresso 
      * @returns boolean
      */
@@ -47,4 +46,5 @@ class ValidacoesIngresso extends ValidacoesService {
     }
 
 }
+
 export default ValidacoesIngresso

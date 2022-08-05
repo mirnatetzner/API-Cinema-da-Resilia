@@ -14,7 +14,6 @@ class Ingresso {
                 res.status(400).json(error.message)
             }
         })
-
         app.get('/ingresso/:id', async (req, res) => {
             try {
                 const ingresso = await IngressoMetodos.listarIngressoPorId(req.params.id)
@@ -26,16 +25,17 @@ class Ingresso {
 
             } catch(error) {
                 res.status(400).json(error.message)
-            } 
+            }
         })
 
         app.post('/ingresso', async (req, res) => {
             const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
-            
+
             try {
                 if(isValid) {
                     const ingresso = new IngressoModel(...Object.values(req.body))
                     const response = await IngressoMetodos.inserirIngresso(ingresso)
+                    console.log(response)
                     res.status(201).json(response)
                 } else {
                     throw new Error("Não foi possível incluir o ingresso em nosso sistema.")
@@ -67,7 +67,7 @@ class Ingresso {
             } catch(error) {
                 res.status(400).json({Error: error.message})
             }
-        })  
+        })
     }
 }
 
