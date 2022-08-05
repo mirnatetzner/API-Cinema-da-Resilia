@@ -27,35 +27,23 @@ class Ingresso {
         })
 
         app.post('/ingresso', async (req, res) => {
-<<<<<<< HEAD
             //const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
 
-=======
-            const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
->>>>>>> new
             try {
                 //if(isValid) {
                     const ingresso = new IngressoModel(...Object.values(req.body))
                     const response = await IngressoMetodos.inserirIngresso(ingresso)
                     console.log(response)
                     res.status(201).json(response)
-<<<<<<< HEAD
                 // } else {
                 //     throw new Error("Não foi possível incluir o ingresso em nosso sistema.")
                 // }
-=======
-                } else {
-                    throw new Error("Não foi possível incluir o ingresso em nosso sistema.")
-                    
-                }
->>>>>>> new
             } catch (error) {
                 res.status(400).json(error.message)
             }
         })
 
         app.put('/ingresso/:id', async (req, res) => {
-<<<<<<< HEAD
            // const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
 
             //if(isValid) {
@@ -66,21 +54,6 @@ class Ingresso {
             } catch(error) {
                 req.status(400).json({error: 'Não foi possível realizar a atualização do ingresso em nosso sistema.'})
             }
-=======
-            const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
-           try{
-               if(isValid) {
-                   const ingresso = new IngressoModel(...Object.values(req.body))
-                   const response = await IngressoMetodos.atualizarIngressoPorId(req.params.id, ingresso)
-                   res.status(201).json(response)
-               } else {
-                throw new Error({Erro: 'Não foi possível realizar a atualização do ingresso em nosso sistema.'})
-               }
-           }
-           catch(e){
-                res.status(400).json({Error: e.message})
-           }
->>>>>>> new
         })
 
         app.delete('/ingresso/:id', async(req, res) => {

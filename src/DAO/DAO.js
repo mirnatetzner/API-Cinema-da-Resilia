@@ -44,13 +44,8 @@ class DAO {
 
     static listarTodos(query) {
         return new Promise((resolve, reject) => {
-<<<<<<< HEAD
-            Database.run(query,[...body, id], (e, resultado) => {
-                if(e){
-=======
             Database.all(query, (e, resultado) => {
                 if (e) {
->>>>>>> new
                     reject(e.message)
                 } else {
                     resolve(resultado)
