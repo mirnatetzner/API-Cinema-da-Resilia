@@ -38,16 +38,15 @@ class DatabaseSalaMetodos extends DAO{
 
     static async atualizaSalaPorId(id, sala){
         const query = `UPDATE Sala SET (cadeiras_comuns, cadeiras_namoradeiras, espaços_cadeirantes, certificado_de_vistoria_anual, categoria_da_sala) = (?,?,?,?,?) WHERE id = ?`
-        const response = await this.atualizaPorId(sala, id, query)
+        const response = await this.atualizarPorId(sala, id, query)
         return response;
     }
 
     static async deletaSalaPorId(id){
         const query = `DELETE FROM Sala WHERE id = ?`
-        const response = await this.deletaPorId(query, id)
+        const response = await this.deletarPorId(query, id)
         return response;
     }
-
 }
 
 export default DatabaseSalaMetodos

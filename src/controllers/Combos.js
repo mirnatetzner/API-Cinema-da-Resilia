@@ -1,17 +1,16 @@
 import CombosMetodos from "../DAO/CombosMetodos.js"
-import DAO from "../DAO/DAO.js"
 import CombosModels from "../models/CombosModels.js"
 import ValidacoesCombos from "../services/ValidacoesCombos.js"
-import Database from "../infra/Database.js"
+//import Database from "../infra/Database.js"
 
-class Combos extends DAO{
+class Combos{
     static combos(app){
         app.get("/combos", async(req, res) => {
             const response =  await CombosMetodos.listarCombos(req)
             res.status(200).json(response)
         })
 
-        app.get("/combos/id/:id", async (req, res) => {
+        app.get("/combos/:id", async (req, res) => {
             try {
                 const combos = await CombosMetodos.listarCombosId(req.params.id)
                 if(!combos){
@@ -36,43 +35,43 @@ class Combos extends DAO{
         })
 
         app.post("/combos", async (req, res) => {
-            const validCombo = ValidacoesCombos.validaCombos(...Object.values(req, body))
-
             try{
-                if(validCombo){
-                    const combos = new CombosModels(...Object.values(req, body))
-                    const response = await CombosMetodos.adicaoNovosCombos(combos)
-                    res.status(201).json(response)
-                } else {
-                    throw new Error ("Não foi possível adicionar novo combo")
+                const isValid = ValidacoesCombos.validaCombos(...Object.values(req.body))
+                if(!isValid){
+                    throw new Error ("Não foi possível adicionar novo combo") 
                 }
-            } catch (e) {
-                res.status(400)
-            }
-        })
-
-        app.put("/combos/:id", (req, res)=> {
-            const isValid = ValidacoesCombos.validCombo(...Object.values(req.body))
-
-            if(isValid){
-                const combo = new CombosModels(...Object.values(req.body))
-                const response = DAO.atualizarPorId(req.params.id, combo)
+                const combos = new CombosModels(...Object.values(req.body))
+                const response = await CombosMetodos.inserirCombos(combos)
                 res.status(201).json(response)
-            } else {
-                res.status(400).json({Erro:"Erro"})
+            } catch (error) {
+                res.status(404).json({Error: error.message})
             }
         })
 
-        app.delete("/combos/:id", (req, res) => {
-            if(ValidacoesCombos.validaCombos(req.params.id, Database.Combos)){
-                const usuario = DAO.deletaPorId(req.params.id)
-                res.status(200).json(usuario)
-            } else {
-                res.status(404).json({Error: "Combo não encontrado"})
+        app.put("/combos/:id", async (req, res)=> {
+            try{
+                const combo = new CombosModels(...Object.values(req.body))
+                const response = await CombosMetodos.attCombosPorId(req.params.id, combo)
+                res.status(201).json(response)
+            } catch (error) {
+                res.status(400).json({Erro:"Erro ao adicionar combo"})
             }
         })
+
+        app.delete("/combos/:id", async(req, res) => {
+            try{
+                const comboDel = await CombosMetodos.deletarCombosPorId(req.params.id)
+                if(!comboDel) {
+                    throw new  Error("Combo não encontrado :/ ")
+                } 
+                res.status(200).json(comboDel)
+            } catch(error) {
+                res.status(404).json({Error: error.message})
+            }
+            
+        })
+        
     }
-
 }
 
 export default Combos

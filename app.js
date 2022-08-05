@@ -8,13 +8,10 @@ import Ingresso from "./src/controllers/Ingresso.js"
 
 dotenv.config()
 
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3002;
 const app = express()
 
 
-/**
- * verificação de servidor online
- */
 app.listen(port, () => {
     console.log(`servidor online em http://localhost:${port}`)
 })

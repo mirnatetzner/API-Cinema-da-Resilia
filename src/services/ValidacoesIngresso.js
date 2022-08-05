@@ -22,6 +22,10 @@ class ValidacoesIngresso extends ValidacoesService{
         return this.validaNumerosInteiros(cadeira);
     }
 
+    static validaHora(hora){
+        return hora.length == 16;
+    }
+
     /**
      * @param {number} precoIngresso 
      * @returns boolean
@@ -38,10 +42,11 @@ class ValidacoesIngresso extends ValidacoesService{
      * @param {number} precoIngresso 
      * @returns boolean
      */
-      static isValid(filme, sala, cadeira, precoIngresso){
+      static isValid(filme, sala, cadeira, hora, precoIngresso){
         return this.validaFilme(filme) 
         && this.validaSala(sala) 
         && this.validaCadeira(cadeira) 
+        && this.validaHora(hora)
         && this.validaPrecoIngresso(precoIngresso)
     }
 
