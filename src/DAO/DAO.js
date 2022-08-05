@@ -65,7 +65,7 @@ class DAO{
     static atualizarPorId(entidade, id, query){
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e, result) => {
+            Database.run(query,[...body, id], (e, resultado) => {
                 if(e){
                     reject(e.message)
                 } else {
