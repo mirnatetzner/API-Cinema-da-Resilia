@@ -1,6 +1,5 @@
 import FilmesModels from "../Models/FilmesModel.js"
 import ValidacoesFilmes from "../services/ValidacoesFilmes.js"
-import FilmesMetodos from "../DAO/FilmesMetodos.js"
 
 
 

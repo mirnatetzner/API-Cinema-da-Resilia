@@ -36,15 +36,20 @@ class IngressoMetodos extends DAO {
         return response
     }
 
-    static async atualizarIngressoPorId(id) {
-        const query = `UPDATE ingresso SET (filme, sala, cadeira, dataHora, precoIngresso) = (?,?,?,?,?) WHERE id = ?`
-        const response = await this.atualizarPorId(id, query)
+    static async atualizarIngressoPorId(id, ingresso) {
+        const query = `UPDATE ingresso SET filme = ?, 
+                        sala = ?, 
+                        cadeira = ?, 
+                        ataHora = ?, 
+                        precoIngresso = ? 
+                        WHERE id = ?`
+        const response = await this.atualizarPorId(ingresso, id, query)
         return response
-    }
+    } 
 
     static async deletarIngressoPorId(id) {
         const query = `DELETE FROM ingresso WHERE id = ?`
-        const response = await this.deletarPorId(id, query)
+        const response = await this.deletarPorId(query, id)
         return response
     }
 }
