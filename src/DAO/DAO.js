@@ -69,7 +69,6 @@ class DAO {
 
     static atualizarPorId(entidade, id, query) {
         const body = Object.values(entidade)
-
         return new Promise((resolve, reject) => {
             Database.run(query, [...body, id], (e) => {
                 if (e) {
@@ -91,6 +90,7 @@ class DAO {
                     reject(e.message)
                 } else {
                     resolve({
+                        Error: false,
                         message: `Registro com Id ${id} deletado com sucesso`
                     })
                 }

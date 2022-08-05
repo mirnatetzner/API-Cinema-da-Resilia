@@ -18,10 +18,10 @@ npm i
 Ou caso prefira, você pode instalá-las uma a uma utilizando, separadamente, o comando abaixo:
 ```npm i express
    npm i sqlite3
-   npm i sqlite3
    npm i dotenv
    npm i path
    npm i url
+   npm i pragma
 ```
 ## Rotas do projeto
 

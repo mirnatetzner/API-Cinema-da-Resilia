@@ -38,7 +38,7 @@ class Salas {
                 }
             } catch (error) {
                 res.status(400).json({
-                    Error: error.message
+                    Error: "revise os campos de sua requisição, confira se os dados estão de acordo com a tipagem e se o endereço está escrito corretamente"
                 })
             }
         })
@@ -57,7 +57,7 @@ class Salas {
                 }
             } catch (error) {
                 res.status(404).json({
-                    Error: error.message
+                    Error: "revise os campos de sua requisição, confira se os dados estão de acordo com a tipagem e se o endereço está escrito corretamente, com parâmetro ID"
                 })
             }
         })
