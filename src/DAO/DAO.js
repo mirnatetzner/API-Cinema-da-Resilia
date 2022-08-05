@@ -1,11 +1,11 @@
 import Database from "../infra/Database.js";
 
-class DAO{
-    static async ativaChavesEstrangeiras(){
+class DAO {
+    static async ativaChavesEstrangeiras() {
         const query = "PRAGMA foreign_keys = ON"
 
-        Database.run(query, e =>{
-            if(e){
+        Database.run(query, e => {
+            if (e) {
                 console.log(e.message);
             } else {
                 console.log("Chaves estrangeiras estão ativas")
@@ -13,10 +13,10 @@ class DAO{
         })
     }
 
-    static createTable(query){
-        return new Promise((resolve, reject)=>{
-            Database.run(query, (e)=>{
-                if(e){
+    static createTable(query) {
+        return new Promise((resolve, reject) => {
+            Database.run(query, (e) => {
+                if (e) {
                     reject(e.message)
                 } else {
                     resolve("Tabela criada com sucesso!")
@@ -25,35 +25,27 @@ class DAO{
         })
     }
 
-    static inserir(entidade, query){
+    static inserir(entidade, query) {
         const body = Object.values(entidade)
 
         return new Promise((resolve, reject) => {
-            Database.run(query, [...body], (e) =>{
-                if(e){
+            Database.run(query, [...body], (e) => {
+                if (e) {
                     reject(e.message)
-                }else{
-                    resolve({error: false, message: "Cadastrado com sucesso!"})
-        }})     })
-    }
-
-    static listarTodos(query){
-    return new Promise((resolve, reject) => {
-        Database.all(query, (e, resultado) => {
-            if(e){
-                reject(e.message)
-            }else{
-                resolve(resultado)
-            }
+                } else {
+                    resolve({
+                        error: false,
+                        message: "Cadastrado com sucesso!"
+                    })
+                }
+            })
         })
-    })
     }
 
-    
-    static listarPorId(id, query){
-        return new Promise((resolve, reject)=> {
-            Database.get(query, id, (e, resultado)=>{
-                if(e){
+    static listarTodos(query) {
+        return new Promise((resolve, reject) => {
+            Database.all(query, (e, resultado) => {
+                if (e) {
                     reject(e.message)
                 } else {
                     resolve(resultado)
@@ -61,27 +53,46 @@ class DAO{
             })
         })
     }
-    
-    static atualizarPorId(entidade, id, query){
-        const body = Object.values(entidade)
+
+
+    static listarPorId(id, query) {
         return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e) => {
-                if(e){
+            Database.get(query, id, (e, resultado) => {
+                if (e) {
                     reject(e.message)
                 } else {
-                    resolve({Error: false, message: `Entidade de id: ${id} atualizado(a) com sucesso!`})
+                    resolve(resultado)
                 }
             })
         })
     }
 
-    static deletarPorId(query, id){
+    static atualizarPorId(entidade, id, query) {
+        const body = Object.values(entidade)
+
         return new Promise((resolve, reject) => {
-            Database.run(query, id, (e) => {
-                if(e){
+            Database.run(query, [...body, id], (e) => {
+                if (e) {
                     reject(e.message)
                 } else {
-                    resolve({message: `Registro com Id ${id} deletado com sucesso`})
+                    resolve({
+                        Error: false,
+                        message: `Entidade de id: ${id} atualizado(a) com sucesso!`
+                    })
+                }
+            })
+        })
+    }
+
+    static deletarPorId(query, id) {
+        return new Promise((resolve, reject) => {
+            Database.run(query, id, (e) => {
+                if (e) {
+                    reject(e.message)
+                } else {
+                    resolve({
+                        message: `Registro com Id ${id} deletado com sucesso`
+                    })
                 }
             })
         })

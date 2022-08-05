@@ -1,40 +1,55 @@
-import ValidacoesService from "./ValidacoesService.js";
-class ValidacoesIngresso extends ValidacoesService {
+import ValidacoesService from "./ValidacoesService.js"
+
+class ValidacoesIngresso extends ValidacoesService{
     static validaFilme(filme) {
-        return filme >= 2
+        return filme.length >= 2
     }
 
+    /**
+     * @param {number} sala 
+     * @returns boolean
+     */
     static validaSala(sala) {
-        sala >= 1&& sala <= 10
+        const salaIsNum = Number(sala)
+        return salaIsNum >= 1
     }
 
+    /**
+     * @param {number} cadeira 
+     * @returns boolean
+     */
     static validaCadeira(cadeira) {
-        if (typeof cadeira != "boolean" ) {
-            const number = Number(cadeira)
-            let Valid = Number.isInteger(number)
-            if (Valid && number > 0) {
-                return true;
-            }
-        }
-        return false;
+        return this.validaNumerosInteiros(cadeira);
     }
 
-    static validaDataHora(dataHora) {
-        const regex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$^([01]?[0-9]|2[0-3]):[0-5][0-9]$/
-        return regex.test(dataHora)
-    }   
+    static validaHora(hora){
+        return hora.length == 16;
+    }
 
+    /**
+     * @param {number} precoIngresso 
+     * @returns boolean
+     */
     static validaPrecoIngresso(precoIngresso) {
-        return parseFloat(precoIngresso)
+        const preco = Number(precoIngresso)
+        return preco == precoIngresso
     }
 
-    static validaCodigoDeBarra(codigoDeBarra){
-        let valido = this.validaNumerosInteiros(codigoDeBarra)
-        if(valido){
-            return codigoDeBarra.length = 12;
-        }
-        return false;
+     /**
+     * @param {string} filme 
+     * @param {number} sala 
+     * @param {number} cadeira
+     * @param {number} precoIngresso 
+     * @returns boolean
+     */
+      static isValid(filme, sala, cadeira, hora, precoIngresso){
+        return this.validaFilme(filme) 
+        && this.validaSala(sala) 
+        && this.validaCadeira(cadeira) 
+        && this.validaHora(hora)
+        && this.validaPrecoIngresso(precoIngresso)
     }
 
 }
+
 export default ValidacoesIngresso

@@ -5,6 +5,7 @@ class IngressoMetodos extends DAO {
     static async createTableIngresso(){
         const query = `
         CREATE TABLE IF NOT EXISTS ingresso(
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
             filme TEXT, 
             sala INTEGER, 
             cadeira INTEGER, 
@@ -15,9 +16,10 @@ class IngressoMetodos extends DAO {
         const response = await this.createTable(query)
         return response
     }
-
+    
     static async inserirIngresso(ingresso){
-        const query = `INSERT INTO ingresso (filme, sala, cadeira, dataHora, precoIngresso) VALUES (?,?,?,?,?)`
+        const query = `INSERT INTO ingresso (filme, sala, cadeira, dataHora, precoIngresso) 
+                       VALUES (?,?,?,?,?)`
         const response = await this.inserir(ingresso, query)
         return response
     }
@@ -35,7 +37,7 @@ class IngressoMetodos extends DAO {
     }
 
     static async atualizarIngressoPorId(id) {
-        const query = `UPDATE bebidas SET filme = ?, sala = ?, cadeira = ?, dataHora = ?, precoIngresso = ? WHERE id = ?`
+        const query = `UPDATE ingresso SET (filme, sala, cadeira, dataHora, precoIngresso) = (?,?,?,?,?) WHERE id = ?`
         const response = await this.atualizarPorId(id, query)
         return response
     }
