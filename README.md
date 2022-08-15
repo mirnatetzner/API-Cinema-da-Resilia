@@ -34,11 +34,12 @@ url/sala
 ```
 
 ## Exemplos para post
-```
+
 POST: url/combos
-
+```
+```
 POST: url/filmes
-
+```
 {
     "nome": "nome do filme",
 		"genero": "Gênero do filme",
@@ -47,12 +48,21 @@ POST: url/filmes
 		"diretor": "Diretor do filme",
 		"sinopse": "Sinopse do filme"
 	}
-
-POST: url/ingresso
-
-POST: url/sala
-
 ```
+POST: url/ingresso
+```
+```
+POST: url/sala
+```
+{
+cadeiras_comuns: INTEGER
+cadeiras_namoradeiras: INTEGER
+espaço_cadeirantes: INTEGER
+certificado_de_vistoria_anual: true || false
+categoria_da_sala: "IMAX" || "XD" || "Macro XE" || "XPlus" || "RealD" || "D-Box"
+}
+```
+
 
 ## Exemplos para DELETE
 ```

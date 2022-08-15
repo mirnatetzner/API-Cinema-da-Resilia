@@ -18,8 +18,9 @@ app.listen(port, () => {
 
 app.use(express.json())
 
+FilmesMetodos.createTableFilmes()
+
 Combos.combos(app)
 Salas.rotas(app)
-FilmesMetodos.createTableFilmes()
 Filmes.rotas(app)
 Ingresso.rotas(app)
