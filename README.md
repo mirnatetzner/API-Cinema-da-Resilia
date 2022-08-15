@@ -58,12 +58,12 @@ POST: url/filmes
 
 ```
 {
-    "nome": "nome do filme",
-		"genero": "Gênero do filme",
-		"duracao": "Duração do filme",
-		"anoLancamento": "Ano de lançamento do filme",
-		"diretor": "Diretor do filme",
-		"sinopse": "Sinopse do filme"
+    nome: "Nome do filme",
+    genero: "Gênero do Filme",
+    duracao: "Duração do filme",
+    anoLancamento: "Ano de lançamento do filme",
+    diretor: "Diretor do filme",
+    sinopse: "Sinopse do filme"
 }
 ```
 
