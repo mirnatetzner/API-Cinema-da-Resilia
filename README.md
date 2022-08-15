@@ -55,11 +55,11 @@ POST: url/ingresso
 POST: url/sala
 ```
 {
-cadeiras_comuns: INTEGER
-cadeiras_namoradeiras: INTEGER
-espaço_cadeirantes: INTEGER
-certificado_de_vistoria_anual: true || false
-categoria_da_sala: "IMAX" || "XD" || "Macro XE" || "XPlus" || "RealD" || "D-Box"
+"cadeiras_comuns": INTEGER
+"cadeiras_namoradeiras": INTEGER
+"espaço_cadeirantes": INTEGER
+"certificado_de_vistoria_anual": true || false
+"categoria_da_sala": "IMAX" || "XD" || "Macro XE" || "XPlus" || "RealD" || "D-Box"
 }
 ```
 
