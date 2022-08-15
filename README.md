@@ -1,21 +1,26 @@
 ![image](https://user-images.githubusercontent.com/102565368/182753604-143dd23a-6ee2-4ba1-a283-f61c0cbe9457.png)
 
+# _CineIndie_ API
 
-# *CineIndie* API
- A ideia era a criação do produto mínimo viável de uma API Rest para web sites de cinemas independentes. 
+A ideia era a criação do produto mínimo viável de uma API Rest para web sites de cinemas independentes.
 API Rest com CRUD das operações no padrão HTTP que faz requisições ao "Cinema da Resilia"
 
 ## Como utilizar nossa aplicação
-  Em seu terminal e na pasta que deseja utilizar a aplicação, dê git clone em nosso projeto:
-  
+
+Em seu terminal e na pasta que deseja utilizar a aplicação, dê git clone em nosso projeto:
+
 ```
 https://github.com/mirnatetzner/API-Cinema-da-Resilia.git
 ```
+
 Além disso, para o funcionamento correto da aplicação, é preciso instalar as dependências utilizadas. Estas foram: **Express**, **SQLite3**, **Dotenv**, **Path** e **Url**. Para isso, você pode utilizar o comando simplificado:
+
 ```
 npm i
 ```
+
 Ou caso prefira, você pode instalá-las uma a uma utilizando, separadamente, o comando abaixo:
+
 ```npm i express
    npm i sqlite3
    npm i dotenv
@@ -23,6 +28,7 @@ Ou caso prefira, você pode instalá-las uma a uma utilizando, separadamente, o 
    npm i url
    npm i pragma
 ```
+
 ## Rotas do projeto
 
 ```
@@ -36,9 +42,20 @@ url/sala
 ## Exemplos para post
 
 POST: url/combos
+
 ```
+{
+    name: "MEGA",
+    price: 30.00,
+    item1: "Pipoca Mega", 
+    item2: "Coca-Cola 400ml", 
+    item3: "Mentos"
+}
+
 ```
+
 POST: url/filmes
+
 ```
 {
     "nome": "nome do filme",
@@ -47,24 +64,36 @@ POST: url/filmes
 		"anoLancamento": "Ano de lançamento do filme",
 		"diretor": "Diretor do filme",
 		"sinopse": "Sinopse do filme"
-	}
-```
-POST: url/ingresso
-```
-```
-POST: url/sala
-```
-{
-"cadeiras_comuns": INTEGER
-"cadeiras_namoradeiras": INTEGER
-"espaço_cadeirantes": INTEGER
-"certificado_de_vistoria_anual": true || false
-"categoria_da_sala": "IMAX" || "XD" || "Macro XE" || "XPlus" || "RealD" || "D-Box"
 }
 ```
 
+POST: url/ingresso
+
+```
+{
+    filme: 'Nome do filme', 
+    sala: 1, 
+    cadeira: 250, 
+    dataHora: '12/06/2022 20:00', 
+    precoIngresso: 40.00
+}
+
+```
+
+POST: url/sala
+
+```
+{
+    "cadeiras_comuns": INTEGER,
+    "cadeiras_namoradeiras": INTEGER,
+    "espaço_cadeirantes": INTEGER,
+    "certificado_de_vistoria_anual": true || false,
+    "categoria_da_sala": "IMAX" || "XD" || "Macro XE" || "XPlus" || "RealD" || "D-Box"
+}
+```
 
 ## Exemplos para DELETE
+
 ```
 DELETE: url/combos/id
 
@@ -75,7 +104,9 @@ DELETE: url/ingresso/id
 DELETE: url/sala/id
 
 ```
+
 ## Exemplos para PUT
+
 ```
 PUT: url/combos/id
 
@@ -88,24 +119,23 @@ PUT: url/filmes/id
 		"diretor": "Teste",
 		"sinopse": "Teste"
 	}
-  
+
 PUT: url/ingresso/id
 
 PUT: url/sala/id
 
 ```
 
+## Rotas e entidades 🔀
 
-## Rotas e entidades	🔀
-Pensando nas necessidades de  O projeto se constitui em quatro entidades, sendo elas: Filmes, Ingressos, Salas e Combos. Abaixo, alguns exemplos de requisições e respostas
-
-
+Pensando nas necessidades de O projeto se constitui em quatro entidades, sendo elas: Filmes, Ingressos, Salas e Combos. Abaixo, alguns exemplos de requisições e respostas
 
 ## Implementação dos verbos do HTTP
 
-### GET 
+### GET
 
- Para acessar as rotas do projeto, basta utilizar um dos comandos abaixo referente a entidade que deseja ver.
+Para acessar as rotas do projeto, basta utilizar um dos comandos abaixo referente a entidade que deseja ver.
+
 ```
 url/combos
 url/filmes
@@ -115,6 +145,7 @@ url/sala
 ```
 
 ### POST
+
 ```
 POST: url/combos
 
@@ -139,14 +170,14 @@ O post poderá ser utilizado para adicionar um novo objeto a entidade desejada. 
 
 ```
   {
-    "nome": "De Volta para o Futuro", 
-    "genero": "Ficção científica", 
-    "duracao": "2hrs", 
-    "anoLancamento": 1985, 
-    "diretor": "Robert Zemeckis", 
+    "nome": "De Volta para o Futuro",
+    "genero": "Ficção científica",
+    "duracao": "2hrs",
+    "anoLancamento": 1985,
+    "diretor": "Robert Zemeckis",
     "sinopse": "Viajando no tempo em um carro modificado"
   }
-    
+
 ```
 
 E a resposta deverá ser:
@@ -157,10 +188,11 @@ E a resposta deverá ser:
     "message": "Cadastrado com sucesso!"
   }
 ```
-E isso significa que o novo filme foi cadastrado no banco de dados. 
 
+E isso significa que o novo filme foi cadastrado no banco de dados.
 
 ### DELETE
+
 ```
 DELETE: url/combos/id
 
@@ -171,7 +203,9 @@ DELETE: url/ingresso/id
 DELETE: url/sala/id
 
 ```
+
 ### PUT
+
 ```
 PUT: url/combos/id
 
@@ -184,17 +218,15 @@ PUT: url/filmes/id
 		"diretor": "Teste",
 		"sinopse": "Teste"
 	}
-  
+
 PUT: url/ingresso/id
 
 PUT: url/sala/id
 
 ```
 
-
-
-
 ## Contribuidores 👩‍💻👨‍💻
+
   <table>
     <tr align='center'>    
       <td align="center">
@@ -232,4 +264,3 @@ PUT: url/sala/id
       </td>
     </tr>
    </table>
- 
