@@ -5,11 +5,6 @@ import FilmesMetodos from '../DAO/FilmesMetodos.js'
 
 
 class Filmes{
-    /**
-     * 
-     * @param {*} app 
-     * 
-     */
     static rotas(app){
         app.get("/filmes", async (req, res) => {
             const response = await FilmesMetodos.listarTodosFilmes()
@@ -70,9 +65,7 @@ class Filmes{
             }
                         
         })
-
     }
-
    }
 
 export default Filmes
