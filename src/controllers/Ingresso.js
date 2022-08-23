@@ -63,10 +63,10 @@ class Ingresso {
         app.delete('/ingresso/:id', async(req, res) => {
             try {
                 const ingresso = await IngressoMetodos.deletarIngressoPorId(req.params.id)
-                if(ingresso) {
-                    res.status(200).json(ingresso)
+                if(!ingresso) {
+                    throw new Error("Ingresso não encontrado em nosso sistema.")
                 }
-                throw new Error("Ingresso não encontrado em nosso sistema.")
+                res.status(200).json(ingresso)
             } catch(error) {
                 res.status(400).json({Error: error.message})
             }
