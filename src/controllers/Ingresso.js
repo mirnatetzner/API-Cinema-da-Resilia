@@ -27,32 +27,36 @@ class Ingresso {
         })
 
         app.post('/ingresso', async (req, res) => {
-            //const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
+            const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
 
             try {
-                //if(isValid) {
+                if(isValid) {
                     const ingresso = new IngressoModel(...Object.values(req.body))
                     const response = await IngressoMetodos.inserirIngresso(ingresso)
                     console.log(response)
                     res.status(201).json(response)
-                // } else {
-                //     throw new Error("Não foi possível incluir o ingresso em nosso sistema.")
-                // }
+                } else {
+                     throw new Error("Não foi possível incluir o ingresso em nosso sistema.")
+                 }
             } catch (error) {
                 res.status(400).json(error.message)
             }
         })
 
         app.put('/ingresso/:id', async (req, res) => {
-           // const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
+            const isValid = ValidacoesIngresso.isValid(...Object.values(req.body))
 
-            //if(isValid) {
             try{
+                if(isValid) {
                 const ingresso = new IngressoModel(...Object.values(req.body))
-                const response = IngressoMetodos.atualizarIngressoPorId(req.params.id, ingresso)
+                const response = await IngressoMetodos.atualizarIngressoPorId(req.params.id, ingresso)
                 res.status(201).json(response)
+                }
+                else{
+                    res.status(400).json({Erro: "Seu ingresso deve ser enviado como objeto JSON com a tipagem correta dos atributos."})
+                }
             } catch(error) {
-                req.status(400).json({error: 'Não foi possível realizar a atualização do ingresso em nosso sistema.'})
+                res.status(400).json({error: 'Não foi possível realizar a atualização do ingresso em nosso sistema.'})
             }
         })
 
