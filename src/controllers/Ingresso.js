@@ -17,10 +17,10 @@ class Ingresso {
         app.get('/ingresso/:id', async (req, res) => {
             try {
                 const ingresso = await IngressoMetodos.listarIngressoPorId(req.params.id)
-                if (ingresso) {
-                    res.status(200).json(ingresso)
+                if (!ingresso) {
+                    throw new Error("Ingresso não identificado em nosso sistema.");
                 }
-                throw new Error("Ingresso não identificado em nosso sistema.");
+                res.status(200).json(ingresso)
             } catch(error) {
                 res.status(400).json(error.message)
             }
