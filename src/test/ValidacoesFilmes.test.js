@@ -1,5 +1,5 @@
-import ValidacoesFilmes from "../services/ValidacoesFilmes";
+/* import ValidacoesFilmes from "../services/ValidacoesFilmes";
 
 test("Validar se existe algum campo em branco", ()=>{
-    expect(ValidacoesFilmes.ValidacoesFilmes("")).toBe(false)
-})
+    expect(ValidacoesFilmes.isValid("")).toBe(false)
+}) */

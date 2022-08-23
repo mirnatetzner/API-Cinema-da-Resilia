@@ -1,4 +1,4 @@
-class ValidacoesFilmes{
+export default class ValidacoesFilmes{
     /**
      * 
      * @param {string} nome 
@@ -67,5 +67,3 @@ class ValidacoesFilmes{
     return this.validaNome(nome)  && this.validaGenero(genero) && this.validaDuracao(duracao) && this.validaAnoLancamento(anoLancamento) && this.validaDiretor(diretor) && this.validaSinopse(sinopse)
 }
 }
-
-export default ValidacoesFilmes
