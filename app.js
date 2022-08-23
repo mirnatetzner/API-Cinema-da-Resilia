@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import Combos from "./src/controllers/Combos.js"
 import Salas from "./src/controllers/Sala.js";
 import Filmes from "./src/controllers/Filmes.js"
-import FilmesMetodos from "./src/DAO/FilmesMetodos.js";
+//import FilmesMetodos from "./src/DAO/FilmesMetodos.js";
 import Ingresso from "./src/controllers/Ingresso.js"
 
 dotenv.config()
@@ -18,7 +18,7 @@ app.listen(port, () => {
 
 app.use(express.json())
 
-FilmesMetodos.createTableFilmes()
+//FilmesMetodos.createTableFilmes()
 
 Combos.combos(app)
 Salas.rotas(app)
