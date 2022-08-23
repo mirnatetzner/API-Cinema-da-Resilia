@@ -40,7 +40,7 @@ class IngressoMetodos extends DAO {
         const query = `UPDATE ingresso SET filme = ?, 
                         sala = ?, 
                         cadeira = ?, 
-                        ataHora = ?, 
+                        dataHora = ?, 
                         precoIngresso = ? 
                         WHERE id = ?`
         const response = await this.atualizarPorId(ingresso, id, query)
