@@ -1,4 +1,4 @@
-import FilmesModels from "../Models/FilmesModel.js"
+import FilmesModels from "../models/FilmesModel.js"
 import ValidacoesFilmes from "../services/ValidacoesFilmes.js"
 
 
