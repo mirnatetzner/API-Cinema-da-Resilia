@@ -254,4 +254,5 @@ DELETE: url/sala/id
     </tr>
    </table>
    
-   Deploy da aplicação na Heroku: https://cine-indie-api-resilia.herokuapp.com/
+  ## Deploy da aplicação na Heroku:
+ https://cine-indie-api-resilia.herokuapp.com/
