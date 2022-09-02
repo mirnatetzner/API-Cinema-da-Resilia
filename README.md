@@ -33,6 +33,7 @@ Além disso, para o funcionamento correto da aplicação, é preciso instalar as
 * **Pragma**
 * **Path**
 * **Url**
+* **cors**
 
 Para isso, você pode utilizar o comando simplificado:
 
@@ -49,6 +50,7 @@ Ou caso prefira, você pode instalá-las uma a uma utilizando, separadamente, o 
    npm i path
    npm i url
    npm i pragma
+   npm i cors
 ```
 -----------------
 # Rotas e entidades 🔀

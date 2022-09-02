@@ -5,13 +5,14 @@ import Salas from "./src/controllers/Sala.js";
 import Filmes from "./src/controllers/Filmes.js"
 //import FilmesMetodos from "./src/DAO/FilmesMetodos.js";
 import Ingresso from "./src/controllers/Ingresso.js"
+import cors from 'cors'
 
 dotenv.config()
 
 const port = process.env.PORT || 3002;
 const app = express()
 
-
+app.use(cors())
 app.listen(port, () => {
     console.log(`servidor online em http://localhost:${port}`)
 })
