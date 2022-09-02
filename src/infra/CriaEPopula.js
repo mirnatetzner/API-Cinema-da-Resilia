@@ -4,14 +4,35 @@ import DatabaseSalaMetodos from "../DAO/DatabaseSalaMetodos.js";
 import IngressoMetodos from "../DAO/IngressoMetodos.js"
 import DAO from "../DAO/DAO.js";
 
-const filme ={
+const filme =[{
     nome: "Nome do filme",
     genero: "Gênero do Filme",
     duracao: "2hrs",
     anoLancamento: "2022",
     diretor: "Teste Diretor",
-    sinopse: "Teste Sinopse"
+    sinopse: "Teste Sinopse",
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
+},
+
+{
+    nome: "Nome do filme",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2022",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
+},
+{
+    nome: "Nome do filme",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2022",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
 }
+]
 
 const combos = {
     name: "MEGA",
@@ -52,9 +73,10 @@ try {
 
     const filmes = await FilmesMetodos.createTableFilmes()
     console.log(filmes, ">>>>>> Filmes")
-    const inserirFilme = await FilmesMetodos.inserirFilme(filme)
-    console.log(inserirFilme, ">>>>>> Filme Inserido")
-    
+    filme.forEach( async filme=>{ 
+        const inserirFilme = await FilmesMetodos.inserirFilme(filme)
+        console.log(inserirFilme, ">>>>>> Filme Inserido")
+    })
     const criaIngresso = await IngressoMetodos.createTableIngresso()
     console.log(criaIngresso, ">>>>>> Ingresso")
     

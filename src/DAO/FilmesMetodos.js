@@ -11,14 +11,15 @@ class FilmesMetodos extends DAO{
             duracao VARCHAR,
             anoLancamento VARCHAR,
             diretor VARCHAR,
-            sinopse TEXT
+            sinopse TEXT,
+            image TEXT
         )`
             const response = await this.createTable(query)
             return response
     }
 
     static async inserirFilme(filme) {
-        const query = `INSERT INTO filmes (nome, genero, duracao, anoLancamento, diretor, sinopse) VALUES (?, ?, ?, ?, ?, ?)`
+        const query = `INSERT INTO filmes (nome, genero, duracao, anoLancamento, diretor, sinopse, image) VALUES (?, ?, ?, ?, ?, ?, ?)`
         const response = await this.inserir(filme, query)
         return response
     }
@@ -43,7 +44,7 @@ class FilmesMetodos extends DAO{
     }
 
     static async atualizaFilmePorId(id, filme){
-        const query = `UPDATE filmes SET (nome, genero, duracao, anoLancamento, diretor, sinopse) = (?,?,?,?,?,?) WHERE id = ?`
+        const query = `UPDATE filmes SET (nome, genero, duracao, anoLancamento, diretor, sinopse, image) = (?,?,?,?,?,?,?) WHERE id = ?`
         const response = await this.atualizarPorId(filme, id, query)
         return response;
     }
