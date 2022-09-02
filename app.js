@@ -12,12 +12,12 @@ dotenv.config()
 const port = process.env.PORT || 3002;
 const app = express()
 
-app.use(cors())
 app.listen(port, () => {
     console.log(`servidor online em http://localhost:${port}`)
 })
 
 app.use(express.json())
+app.use(cors())
 
 //FilmesMetodos.createTableFilmes()
 
