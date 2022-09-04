@@ -5,7 +5,7 @@ import IngressoMetodos from "../DAO/IngressoMetodos.js"
 import DAO from "../DAO/DAO.js";
 
 const filme =[{
-    nome: "Nome do filme",
+    nome: "Titanic",
     genero: "Gênero do Filme",
     duracao: "2hrs",
     anoLancamento: "2022",
@@ -15,7 +15,7 @@ const filme =[{
 },
 
 {
-    nome: "Nome do filme",
+    nome: "As branquelas",
     genero: "Gênero do Filme",
     duracao: "2hrs",
     anoLancamento: "2022",
@@ -24,7 +24,7 @@ const filme =[{
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
 },
 {
-    nome: "Nome do filme",
+    nome: "Todo mundo em pânico",
     genero: "Gênero do Filme",
     duracao: "2hrs",
     anoLancamento: "2022",
