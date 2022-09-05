@@ -11,17 +11,17 @@ const filme =[{
     anoLancamento: "2022",
     diretor: "Teste Diretor",
     sinopse: "Teste Sinopse",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
+    image: 'https://images.mubicdn.net/images/film/249347/cache-486799-1632487706/image-w1280.jpg?size=800x'
 },
 
 {
     nome: "As branquelas",
     genero: "Gênero do Filme",
     duracao: "2hrs",
-    anoLancamento: "2022",
+    anoLancamento: "2072",
     diretor: "Teste Diretor",
     sinopse: "Teste Sinopse",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
+    image: 'https://assets.mubicdn.net/images/film/225137/image-w1280.jpg?1573848004'
 },
 {
     nome: "Todo mundo em pânico",
@@ -30,7 +30,52 @@ const filme =[{
     anoLancamento: "2022",
     diretor: "Teste Diretor",
     sinopse: "Teste Sinopse",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Pa%C3%A7oca.jpg/250px-Pa%C3%A7oca.jpg'
+    image: 'https://assets.mubicdn.net/images/film/269690/image-w1280.jpg?1591442924'
+},
+{
+    nome: "xena a princesa guerreira",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2022",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://www.planoaberto.com.br/wp-content/uploads/2022/01/fabian-capa.jpg'
+},
+{
+    nome: "Dona flor e seus 3 maridos",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2022",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://f.i.uol.com.br/fotografia/2021/12/15/163957688461b9f53424c8e_1639576884_3x2_md.jpg'
+},
+{
+    nome: "Dona flor e seus 3 maridos",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2022",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://revistadecinema.com.br/wp-content/uploads/2022/03/IMG_5097-800x445.jpg'
+},
+{
+    nome: "E x man",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2022",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://i.ytimg.com/vi/f07LzRWLhho/maxresdefault.jpg'
+},
+{
+    nome: "Casa de Cera",
+    genero: "Gênero do Filme",
+    duracao: "2hrs",
+    anoLancamento: "2302",
+    diretor: "Teste Diretor",
+    sinopse: "Teste Sinopse",
+    image: 'https://media.filmelier.com/tit/2rMd8t/thumb/vitalina-varela_TevgDdI.jpeg'
 }
 ]
 
